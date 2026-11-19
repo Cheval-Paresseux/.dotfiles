@@ -1,0 +1,109 @@
+# Death Star theme: gunmetal greys, saber red focus (see ../README.md)
+
+[app]
+overall = { bg = "#0d0f12" }
+
+[mgr]
+cwd = { fg = "#e32b36", bold = true }
+find_keyword = { fg = "#f2b134", bold = true }
+find_position = { fg = "#676e79" }
+hovered = { bg = "#24282e" }
+hovered_file = { fg = "#dfe2e6", bg = "#24282e", bold = true }
+preview_hovered = { bg = "#24282e" }
+marker_copied = { fg = "#84c26a", bg = "#84c26a" }
+marker_cut = { fg = "#b18cff", bg = "#b18cff" }
+marker_marked = { fg = "#73a7d9", bg = "#73a7d9" }
+marker_selected = { fg = "#e32b36", bg = "#e32b36" }
+count_copied = { fg = "#08090b", bg = "#84c26a" }
+count_cut = { fg = "#08090b", bg = "#b18cff" }
+count_selected = { fg = "#08090b", bg = "#e32b36" }
+border_symbol = "│"
+border_style = { fg = "#24282e" }
+
+[indicator]
+parent = { fg = "#9399a3", bg = "#1b1e23" }
+current = { fg = "#08090b", bg = "#e32b36" }
+preview = { fg = "#9399a3", bg = "#1b1e23" }
+
+[tabs]
+active = { fg = "#08090b", bg = "#e32b36", bold = true }
+inactive = { fg = "#676e79", bg = "#08090b" }
+
+[mode]
+normal_main = { fg = "#08090b", bg = "#e32b36", bold = true }
+normal_alt = { fg = "#e32b36", bg = "#1b1e23" }
+select_main = { fg = "#08090b", bg = "#73a7d9", bold = true }
+select_alt = { fg = "#73a7d9", bg = "#1b1e23" }
+unset_main = { fg = "#08090b", bg = "#b18cff", bold = true }
+unset_alt = { fg = "#b18cff", bg = "#1b1e23" }
+
+[status]
+overall = { fg = "#9399a3", bg = "#0d0f12" }
+perm_type = { fg = "#73a7d9" }
+perm_read = { fg = "#f2b134" }
+perm_write = { fg = "#b18cff" }
+perm_exec = { fg = "#84c26a" }
+perm_sep = { fg = "#4b515b" }
+progress_label = { fg = "#dfe2e6", bold = true }
+progress_normal = { fg = "#e32b36", bg = "#1b1e23" }
+progress_error = { fg = "#b18cff", bg = "#1b1e23" }
+
+[which]
+mask = { bg = "#131519" }
+cand = { fg = "#e32b36" }
+rest = { fg = "#676e79" }
+desc = { fg = "#b8bdc5" }
+separator_style = { fg = "#4b515b" }
+
+[confirm]
+border = { fg = "#e32b36" }
+title = { fg = "#e32b36", bold = true }
+body = { fg = "#b8bdc5" }
+btn_yes = { fg = "#08090b", bg = "#e32b36", bold = true }
+btn_no = { fg = "#dfe2e6", bg = "#24282e" }
+
+[input]
+border = { fg = "#e32b36" }
+title = { fg = "#e32b36", bold = true }
+value = { fg = "#dfe2e6" }
+selected = { bg = "#30353d" }
+
+[pick]
+border = { fg = "#e32b36" }
+active = { fg = "#e32b36", bg = "#24282e", bold = true }
+inactive = { fg = "#b8bdc5" }
+
+[cmp]
+border = { fg = "#30353d" }
+active = { fg = "#dfe2e6", bg = "#24282e" }
+inactive = { fg = "#9399a3" }
+
+[tasks]
+border = { fg = "#e32b36" }
+title = { fg = "#e32b36", bold = true }
+hovered = { fg = "#dfe2e6", bg = "#24282e" }
+
+[help]
+on = { fg = "#e32b36" }
+run = { fg = "#73a7d9" }
+desc = { fg = "#9399a3" }
+hovered = { bg = "#24282e", bold = true }
+footer = { fg = "#dfe2e6", bg = "#1b1e23" }
+
+[notify]
+title_info = { fg = "#73a7d9" }
+title_warn = { fg = "#f2b134" }
+title_error = { fg = "#b18cff" }
+
+[filetype]
+rules = [
+	{ mime = "image/*", fg = "#e8743b" },
+	{ mime = "{audio,video}/*", fg = "#9aa8b8" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f2b134" },
+	{ mime = "application/{pdf,doc,rtf}", fg = "#6fc3c9" },
+	{ mime = "inode/empty", fg = "#4b515b" },
+	{ url = "*", is = "orphan", fg = "#b18cff" },
+	{ url = "*", is = "exec", fg = "#84c26a" },
+	{ url = "*/", fg = "#73a7d9", bold = true },
+	{ url = "*", fg = "#dfe2e6" },
+]

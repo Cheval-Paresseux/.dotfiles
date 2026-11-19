@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="moss" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#c8d67a"/><stop offset="0.45" stop-color="#6f9a4a"/><stop offset="1" stop-color="#2c403a"/></radialGradient>
+    <radialGradient id="shade" cx="0.35" cy="0.3" r="0.8"><stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.55"/></radialGradient>
+  </defs>
+  <!-- Damp atmosphere -->
+  <circle cx="100" cy="100" r="78" fill="#7cc4b8" opacity="0.15"/>
+  <circle cx="100" cy="100" r="74" fill="#7cc4b8" opacity="0.2"/>
+  <circle cx="100" cy="100" r="70" fill="url(#moss)"/>
+  <!-- Bogs -->
+  <g fill="#22332e" opacity="0.55">
+    <path d="M50 80 q14 -12 30 -2 q10 8 -4 16 q-16 6 -26 -4z"/>
+    <path d="M108 120 q18 -10 34 2 q8 10 -8 14 q-20 4 -26 -6z"/>
+    <path d="M118 62 q10 -6 18 2 q2 8 -8 8 q-10 0 -10 -10z"/>
+  </g>
+  <!-- Drifting mist -->
+  <g fill="none" stroke="#dbe6dc" stroke-linecap="round" opacity="0.5">
+    <path d="M38 92 Q70 80 110 94 T164 88" stroke-width="6"/>
+    <path d="M50 138 Q80 126 120 140 T150 132" stroke-width="5"/>
+    <path d="M60 58 Q90 50 120 58" stroke-width="4"/>
+  </g>
+  <circle cx="100" cy="100" r="70" fill="url(#shade)"/>
+</svg>

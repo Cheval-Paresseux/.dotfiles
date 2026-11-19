@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="steel" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#b8bdc5"/><stop offset="0.6" stop-color="#676e79"/><stop offset="1" stop-color="#30353d"/></radialGradient>
+    <radialGradient id="dish" cx="0.6" cy="0.65" r="0.7"><stop offset="0" stop-color="#9399a3"/><stop offset="1" stop-color="#4b515b"/></radialGradient>
+    <radialGradient id="shade" cx="0.35" cy="0.3" r="0.8"><stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.55"/></radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="70" fill="url(#steel)"/>
+  <g fill="none" stroke="#24282e">
+    <!-- Hull plating -->
+    <g stroke-width="1" opacity="0.6">
+      <path d="M40.1 70 Q100 60 159.9 70"/>
+      <path d="M42.3 134 Q100 146 157.7 134"/>
+      <path d="M60.3 154 Q100 164 139.7 154"/>
+      <path d="M100 30 V64 M130 112 V146 M64 112 V150"/>
+    </g>
+    <!-- Equatorial trench -->
+    <path d="M31.0 102 Q100 114 169.0 102" stroke-width="4"/>
+  </g>
+  <!-- Superlaser dish -->
+  <circle cx="74" cy="72" r="20" fill="url(#dish)" stroke="#24282e" stroke-width="2"/>
+  <circle cx="74" cy="72" r="9" fill="none" stroke="#30353d" stroke-width="1.5"/>
+  <circle cx="74" cy="72" r="3.5" fill="#e32b36"/>
+  <circle cx="100" cy="100" r="70" fill="url(#shade)"/>
+</svg>

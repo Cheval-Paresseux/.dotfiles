@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="ice" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#dce4ec"/><stop offset="1" stop-color="#91a1b3"/></radialGradient>
+    <radialGradient id="cold" cx="0.35" cy="0.3" r="0.8"><stop offset="0.55" stop-color="#1f2a37" stop-opacity="0"/><stop offset="1" stop-color="#1f2a37" stop-opacity="0.45"/></radialGradient>
+   
+  </defs>
+  <!-- A small moon -->
+  <circle cx="34" cy="38" r="9" fill="#bccad8"/>
+  <circle cx="37" cy="41" r="9" fill="#718296" opacity="0.4"/>
+  <circle cx="100" cy="100" r="76" fill="#a9c8ec" opacity="0.35"/>
+  <circle cx="100" cy="100" r="70" fill="url(#ice)"/>
+  <!-- Crevasses -->
+  <g fill="none" stroke="#4a7fa8" stroke-width="2" stroke-linecap="round" opacity="0.55">
+    <path d="M52 90 l18 8 l10 -6 l22 10"/>
+    <path d="M96 140 l14 -10 l16 4 l12 -12"/>
+    <path d="M120 66 l10 10 l18 -2"/>
+  </g>
+  <!-- Snowfields -->
+  <g fill="#bccad8" opacity="0.7">
+    <ellipse cx="70" cy="128" rx="14" ry="6"/>
+    <ellipse cx="140" cy="104" rx="10" ry="4"/>
+    <ellipse cx="90" cy="62" rx="12" ry="4"/>
+  </g>
+  <circle cx="100" cy="100" r="70" fill="url(#cold)"/>
+</svg>
