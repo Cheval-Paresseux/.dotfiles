@@ -38,6 +38,7 @@ for app in "${APPS[@]}"; do
   fi
 done
 
+mkdir -p "$HOME/.config"
 for app in "${APPS[@]}"; do
   ln -sfn "$THEMES_DIR/$THEME/$app" "$HOME/.config/$app"
   echo "Linked $app"
@@ -50,6 +51,7 @@ mkdir -p "$(dirname "$fish_vars")"
 if [ -f "$theme_vars" ] && [ ! -L "$theme_vars" ] && [ ! -e "$fish_vars" ]; then
   mv "$theme_vars" "$fish_vars"
 fi
+touch "$fish_vars"
 ln -sfn "$fish_vars" "$theme_vars"
 
 # Apply the theme to the running session (Yazi picks it up on its next start)

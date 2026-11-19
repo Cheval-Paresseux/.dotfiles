@@ -62,18 +62,33 @@ After rebooting, log in to the **Hyprland (UWSM)** session.
 
 `sddm/` is the SDDM theme: one of its live wallpapers, picked at random on every start (each screen
 draws its own), loops muted, with the interface kept to the corners so the wallpaper stays in view:
-the clock and date at the top left, the session at the bottom left (click to cycle), and the user,
-an underlined password field, reboot and shut down at the bottom right. A light shading and a soft
-text shadow keep it readable on bright frames; colours are the base theme's. The wallpaper's first
-frame (`sddm/posters/`) shows while the video loads.
+
+- top left: a large thin clock, its colon in the accent, over the date;
+- bottom left: the session, cycled with the arrows or a click on its name;
+- bottom right: the user, a dark glass password pill whose submit button lights up in the accent,
+  and round reboot and shut down buttons (shut down turns red on hover).
+
+Each wallpaper brings its own accent (`accents` in `sddm/theme.conf`, one per video, taken from its colours):
+warm sunrise amber for the Star Destroyer, icy blue for the Venators. Small spaced-out uppercase
+captions led by a short accent line ("Welcome back", "Session", the date) tie the corners together;
+"Wrong password" and "Caps Lock is on" replace the greeting, in red and yellow. A vignette and a soft
+text shadow keep everything readable on bright frames, and the interface fades in when the screen appears.
+The wallpaper's first frame (`sddm/posters/`) shows while the video loads.
 
 SDDM runs as its own user and cannot read the home directory, so the theme is copied to
 `/usr/share/sddm/themes/dotfiles`: run `scripts/install-sddm.sh` again after editing it.
 Preview it in a window from the desktop with `sddm-greeter-qt6 --test-mode --theme ~/.dotfiles/sddm`
 (power buttons are hidden in test mode).
 
-To add a wallpaper, put the video in `sddm/`, its first frame in `sddm/posters/` under the same name
-(`ffmpeg -i <video> -frames:v 1 -vf scale=1920:-1 sddm/posters/<name>.jpg`) and list it in `sddm/theme.conf`.
+To add a wallpaper, prepare it like the others (debanded and re-encoded with a fine grain, which hides
+the compression blocks of low-bitrate downloads), save its first frame as a poster, and list it with an
+accent in `sddm/theme.conf`:
+
+```bash
+ffmpeg -i <source> -vf "deband=1thr=0.015:2thr=0.015:3thr=0.015:range=22:blur=1,noise=c0s=3:c0f=t+u" \
+    -c:v libx264 -crf 18 -preset slow -tune grain -pix_fmt yuv420p -movflags +faststart -an sddm/<name>.mp4
+ffmpeg -i sddm/<name>.mp4 -frames:v 1 -vf scale=1920:-1 -q:v 3 sddm/posters/<name>.jpg
+```
 
 Bluetooth pairing works from the bar's Bluetooth popup: the shell runs a small BlueZ pairing agent
 (`quickshell/scripts/bt-agent.py`) and shows the code to type on a keyboard, or asks to confirm one, inside the popup.

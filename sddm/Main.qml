@@ -1,24 +1,27 @@
 import QtQuick
 import QtQuick.Effects
+import QtQuick.Shapes
 import QtMultimedia
 
 // Login screen: one of the live wallpapers (picked at random), with the clock, session and login in the corners.
-// Colours are the base theme's palette.
+// Each wallpaper brings its own accent colour (theme.conf); the rest is the base theme's neutrals.
 Rectangle {
     id: root
 
     readonly property color crust: "#111111"
-    readonly property color text: "#e6e6e6"
-    readonly property color accent: "#73daca"
+    readonly property color text: "#f2f2f2"
     readonly property color warning: "#ecd06f"
     readonly property color critical: "#f7768e"
 
     // SDDM reads a comma-separated value as a list; String() joins it back either way
     readonly property var videos: String(config.videos).split(",")
-    readonly property string video: videos[Math.floor(Math.random() * videos.length)]
+    readonly property var accents: String(config.accents).split(",")
+    readonly property int pick: Math.floor(Math.random() * videos.length)
+    readonly property string video: videos[pick]
+    readonly property color accent: accents[pick] || "#73daca"
     // Sizes are designed for 1080p and grow with the screen
     readonly property real u: Math.max(1, height / 1080)
-    readonly property real margin: 56 * u
+    readonly property real margin: 72 * u
 
     property int userIndex: userModel.lastIndex
     property int sessionIndex: sessionModel.lastIndex
@@ -31,8 +34,8 @@ Rectangle {
         return String.fromCodePoint(code)
     }
 
-    function nextSession() {
-        sessionIndex = (sessionIndex + 1) % sessionModel.count
+    function cycle(index, count, step) {
+        return (index + step + count) % count
     }
 
     function login() {
@@ -81,8 +84,6 @@ Rectangle {
     }
 
     Video {
-        id: background
-
         anchors.fill: parent
         source: Qt.resolvedUrl(root.video)
         fillMode: VideoOutput.PreserveAspectCrop
@@ -91,214 +92,268 @@ Rectangle {
         autoPlay: true
     }
 
-    // Light shading behind the corners keeps the text readable on bright frames
-    Rectangle {
+    // Vignette: settles the edges and the corners where the interface sits
+    Shape {
         anchors.fill: parent
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: Qt.alpha(root.crust, 0.35) }
-            GradientStop { position: 0.25; color: "transparent" }
-            GradientStop { position: 0.7; color: "transparent" }
-            GradientStop { position: 1.0; color: Qt.alpha(root.crust, 0.55) }
+
+        ShapePath {
+            strokeWidth: -1
+            fillGradient: RadialGradient {
+                centerX: root.width / 2
+                centerY: root.height * 0.45
+                centerRadius: Math.hypot(root.width, root.height) * 0.55
+                focalX: centerX
+                focalY: centerY
+                GradientStop { position: 0.45; color: "transparent" }
+                GradientStop { position: 1.0; color: Qt.alpha(root.crust, 0.7) }
+            }
+            PathRectangle { width: root.width; height: root.height }
         }
     }
 
-    Column {
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.margins: root.margin
-        layer.enabled: true
-        layer.effect: Shadow {}
+    // Everything drawn over the wallpaper fades in once the greeter is up
+    Item {
+        anchors.fill: parent
+        opacity: 0
+        Component.onCompleted: opacity = 1
 
-        Text {
-            id: clock
-
-            color: root.text
-            font.family: "Noto Sans"
-            font.weight: Font.Light
-            font.pixelSize: 88 * root.u
+        Behavior on opacity {
+            NumberAnimation { duration: 1200; easing.type: Easing.OutCubic }
         }
 
-        Text {
-            id: date
-
-            leftPadding: 4 * root.u
-            color: root.text
-            opacity: 0.9
-            font.family: "Noto Sans"
-            font.pixelSize: 20 * root.u
-        }
-
-        Timer {
-            running: true
-            repeat: true
-            triggeredOnStart: true
-            interval: 1000
-            onTriggered: {
-                const now = new Date()
-                clock.text = Qt.formatTime(now, "HH:mm")
-                date.text = Qt.formatDate(now, "dddd d MMMM")
-            }
-        }
-    }
-
-    // Session: click to cycle
-    Row {
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        anchors.margins: root.margin
-        layer.enabled: true
-        layer.effect: Shadow {}
-        spacing: 10 * root.u
-
-        IconButton {
-            icon: root.glyph(0xF0379)
-            onClicked: root.nextSession()
-        }
-
-        Text {
-            anchors.verticalCenter: parent.verticalCenter
-            text: root.session ? root.session.name : ""
-            color: root.text
-            opacity: 0.9
-            font.family: "Noto Sans"
-            font.pixelSize: 15 * root.u
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                onClicked: root.nextSession()
-            }
-        }
-    }
-
-    Column {
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.margins: root.margin
-        layer.enabled: true
-        layer.effect: Shadow {}
-        spacing: 8 * root.u
-
-        Text {
-            anchors.right: parent.right
-            text: root.failed ? "Wrong password" : (keyboard.capsLock ? "Caps Lock is on" : "")
-            color: root.failed ? root.critical : root.warning
-            font.family: "Noto Sans"
-            font.pixelSize: 13 * root.u
-        }
-
-        // The name cycles through the users when there are several
-        Row {
-            anchors.right: parent.right
-            spacing: 8 * root.u
-
-            IconButton {
-                visible: userModel.count > 1
-                icon: root.glyph(0xF0141)
-                font.pixelSize: 16 * root.u
-                onClicked: root.userIndex = (root.userIndex + userModel.count - 1) % userModel.count
-            }
+        Column {
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.margins: root.margin
+            spacing: 10 * root.u
+            layer.enabled: true
+            layer.effect: Shadow {}
 
             Text {
-                text: root.user ? root.user.realName || root.user.name : ""
+                id: clock
+
+                // The thin weight's side bearing pushes the digits right; pull them back onto the margin
+                x: -16 * root.u
+                textFormat: Text.StyledText
                 color: root.text
                 font.family: "Noto Sans"
-                font.weight: Font.Medium
-                font.pixelSize: 16 * root.u
+                font.weight: Font.Thin
+                font.pixelSize: 168 * root.u
+                font.letterSpacing: -4 * root.u
             }
 
-            IconButton {
-                visible: userModel.count > 1
-                icon: root.glyph(0xF0142)
-                font.pixelSize: 16 * root.u
-                onClicked: root.userIndex = (root.userIndex + 1) % userModel.count
+            Caption {
+                id: date
+            }
+
+            Timer {
+                running: true
+                repeat: true
+                triggeredOnStart: true
+                interval: 1000
+                onTriggered: {
+                    const now = new Date()
+                    clock.text = Qt.formatTime(now, "HH") + "<font color='" + root.accent + "'>:</font>" + Qt.formatTime(now, "mm")
+                    date.text = Qt.formatDate(now, "dddd  ·  d MMMM")
+                }
             }
         }
 
-        Row {
-            anchors.right: parent.right
-            spacing: 20 * root.u
+        // Session: the arrows (or a click on the name) cycle through the sessions
+        Column {
+            anchors.left: parent.left
+            anchors.bottom: parent.bottom
+            anchors.margins: root.margin
+            spacing: 12 * root.u
+            layer.enabled: true
+            layer.effect: Shadow {}
 
-            // Underlined field, no box: the wallpaper stays visible behind it
-            Item {
-                width: 260 * root.u
-                height: 34 * root.u
-                transform: Translate { id: shakeOffset }
+            Caption {
+                text: "Session"
+            }
 
-                SequentialAnimation {
-                    id: shake
+            Row {
+                spacing: 14 * root.u
 
-                    loops: 2
-                    NumberAnimation { target: shakeOffset; property: "x"; to: -8; duration: 40 }
-                    NumberAnimation { target: shakeOffset; property: "x"; to: 8; duration: 80 }
-                    NumberAnimation { target: shakeOffset; property: "x"; to: 0; duration: 40 }
+                IconButton {
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: sessionModel.count > 1
+                    icon: root.glyph(0xF0141)
+                    onClicked: root.sessionIndex = root.cycle(root.sessionIndex, sessionModel.count, -1)
                 }
 
-                TextInput {
-                    id: password
-
-                    anchors.fill: parent
-                    anchors.rightMargin: 28 * root.u
-                    verticalAlignment: TextInput.AlignVCenter
-                    echoMode: TextInput.Password
-                    passwordCharacter: "•"
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: root.session ? root.session.name : ""
                     color: root.text
-                    selectionColor: Qt.alpha(root.accent, 0.35)
                     font.family: "Noto Sans"
-                    font.pixelSize: 16 * root.u
-                    clip: true
-                    focus: true
-                    onTextChanged: if (text !== "") root.failed = false
-                    onAccepted: root.login()
+                    font.weight: Font.Light
+                    font.pixelSize: 20 * root.u
 
-                    Text {
-                        anchors.verticalCenter: parent.verticalCenter
-                        visible: password.text === ""
-                        text: "Password"
-                        color: root.text
-                        opacity: 0.7
-                        font: password.font
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: root.sessionIndex = root.cycle(root.sessionIndex, sessionModel.count, 1)
                     }
                 }
 
                 IconButton {
-                    anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    icon: root.glyph(0xF0054)
-                    font.pixelSize: 18 * root.u
-                    color: password.text !== "" ? root.accent : Qt.alpha(root.text, 0.85)
-                    onClicked: root.login()
+                    visible: sessionModel.count > 1
+                    icon: root.glyph(0xF0142)
+                    onClicked: root.sessionIndex = root.cycle(root.sessionIndex, sessionModel.count, 1)
+                }
+            }
+        }
+
+        Column {
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            anchors.margins: root.margin
+            spacing: 12 * root.u
+            layer.enabled: true
+            layer.effect: Shadow {}
+
+            Caption {
+                anchors.right: parent.right
+                text: root.failed ? "Wrong password" : (keyboard.capsLock ? "Caps Lock is on" : "Welcome back")
+                lineColor: root.failed ? root.critical : (keyboard.capsLock ? root.warning : root.accent)
+            }
+
+            // The name cycles through the users when there are several
+            Row {
+                anchors.right: parent.right
+                spacing: 14 * root.u
+
+                IconButton {
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: userModel.count > 1
+                    icon: root.glyph(0xF0141)
+                    onClicked: root.userIndex = root.cycle(root.userIndex, userModel.count, -1)
                 }
 
-                Rectangle {
-                    anchors.bottom: parent.bottom
-                    width: parent.width
-                    height: Math.max(1, root.u)
-                    color: root.failed ? root.critical : (password.text !== "" ? root.accent : Qt.alpha(root.text, 0.45))
+                Text {
+                    text: root.user ? root.user.realName || root.user.name : ""
+                    color: root.text
+                    font.family: "Noto Sans"
+                    font.weight: Font.Light
+                    font.pixelSize: 40 * root.u
+                }
+
+                IconButton {
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: userModel.count > 1
+                    icon: root.glyph(0xF0142)
+                    onClicked: root.userIndex = root.cycle(root.userIndex, userModel.count, 1)
                 }
             }
 
-            Rectangle {
-                anchors.verticalCenter: parent.verticalCenter
-                visible: sddm.canReboot || sddm.canPowerOff
+            Item {
                 width: 1
-                height: 20 * root.u
-                color: Qt.alpha(root.text, 0.3)
+                height: 8 * root.u
             }
 
-            IconButton {
-                anchors.verticalCenter: parent.verticalCenter
-                visible: sddm.canReboot
-                icon: root.glyph(0xF0709)
-                onClicked: sddm.reboot()
-            }
+            Row {
+                anchors.right: parent.right
+                spacing: 12 * root.u
 
-            IconButton {
-                anchors.verticalCenter: parent.verticalCenter
-                visible: sddm.canPowerOff
-                icon: root.glyph(0xF0425)
-                hoverColor: root.critical
-                onClicked: sddm.powerOff()
+                // Dark glass pill: reads on bright frames, the wallpaper stays visible through it
+                Rectangle {
+                    width: 340 * root.u
+                    height: 52 * root.u
+                    radius: height / 2
+                    color: Qt.alpha(root.crust, password.activeFocus ? 0.45 : 0.35)
+                    border.width: 1
+                    border.color: root.failed ? root.critical
+                        : (password.text !== "" ? Qt.alpha(root.accent, 0.8) : Qt.alpha(root.text, 0.25))
+                    transform: Translate { id: shakeOffset }
+
+                    Behavior on border.color {
+                        ColorAnimation { duration: 200 }
+                    }
+
+                    SequentialAnimation {
+                        id: shake
+
+                        loops: 2
+                        NumberAnimation { target: shakeOffset; property: "x"; to: -10; duration: 45 }
+                        NumberAnimation { target: shakeOffset; property: "x"; to: 10; duration: 90 }
+                        NumberAnimation { target: shakeOffset; property: "x"; to: 0; duration: 45 }
+                    }
+
+                    TextInput {
+                        id: password
+
+                        anchors.fill: parent
+                        anchors.leftMargin: 24 * root.u
+                        anchors.rightMargin: 56 * root.u
+                        verticalAlignment: TextInput.AlignVCenter
+                        echoMode: TextInput.Password
+                        passwordCharacter: "●"
+                        color: root.text
+                        selectionColor: Qt.alpha(root.accent, 0.4)
+                        font.family: "Noto Sans"
+                        font.pixelSize: 14 * root.u
+                        font.letterSpacing: 4 * root.u
+                        clip: true
+                        focus: true
+                        onTextChanged: if (text !== "") root.failed = false
+                        onAccepted: root.login()
+                        Keys.onEscapePressed: text = ""
+
+                        Text {
+                            anchors.verticalCenter: parent.verticalCenter
+                            visible: password.text === ""
+                            text: "Password"
+                            color: Qt.alpha(root.text, 0.7)
+                            font.family: "Noto Sans"
+                            font.weight: Font.Light
+                            font.pixelSize: 17 * root.u
+                        }
+                    }
+
+                    // Submit: lights up in the accent once there is something to send
+                    Rectangle {
+                        anchors.right: parent.right
+                        anchors.rightMargin: 7 * root.u
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 38 * root.u
+                        height: width
+                        radius: width / 2
+                        color: password.text !== "" ? root.accent : Qt.alpha(root.text, 0.12)
+
+                        Behavior on color {
+                            ColorAnimation { duration: 200 }
+                        }
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: root.glyph(0xF0054)
+                            color: password.text !== "" ? root.crust : Qt.alpha(root.text, 0.7)
+                            font.family: "MesloLGM Nerd Font"
+                            font.pixelSize: 18 * root.u
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: root.login()
+                        }
+                    }
+                }
+
+                RoundButton {
+                    visible: sddm.canReboot
+                    icon: root.glyph(0xF0709)
+                    onClicked: sddm.reboot()
+                }
+
+                RoundButton {
+                    visible: sddm.canPowerOff
+                    icon: root.glyph(0xF0425)
+                    hoverColor: root.critical
+                    onClicked: sddm.powerOff()
+                }
             }
         }
     }
@@ -307,32 +362,97 @@ Rectangle {
     component Shadow: MultiEffect {
         shadowEnabled: true
         shadowColor: root.crust
-        shadowOpacity: 0.9
+        shadowOpacity: 0.8
         shadowBlur: 1.0
-        shadowHorizontalOffset: 0
         shadowVerticalOffset: 1
     }
 
+    // Small spaced-out uppercase label led by a short line in the accent
+    component Caption: Row {
+        property alias text: label.text
+        property alias lineColor: line.color
+
+        spacing: 14 * root.u
+
+        Rectangle {
+            id: line
+
+            anchors.verticalCenter: parent.verticalCenter
+            width: 28 * root.u
+            height: Math.max(1, 2 * root.u)
+            radius: height / 2
+            color: root.accent
+        }
+
+        Text {
+            id: label
+
+            color: root.text
+            opacity: 0.95
+            font.family: "Noto Sans"
+            font.weight: Font.Medium
+            font.pixelSize: 13 * root.u
+            font.letterSpacing: 4 * root.u
+            font.capitalization: Font.AllUppercase
+        }
+    }
+
     component IconButton: Text {
-        id: button
+        id: iconButton
 
         property string icon
-        property color hoverColor: root.text
         signal clicked()
 
         text: icon
-        color: mouse.containsMouse ? hoverColor : Qt.alpha(root.text, 0.85)
+        color: mouse.containsMouse ? root.accent : Qt.alpha(root.text, 0.7)
         font.family: "MesloLGM Nerd Font"
-        font.pixelSize: 22 * root.u
+        font.pixelSize: 18 * root.u
 
         MouseArea {
             id: mouse
 
             anchors.fill: parent
-            anchors.margins: -6
+            anchors.margins: -8
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
-            onClicked: button.clicked()
+            onClicked: iconButton.clicked()
+        }
+    }
+
+    // Circle the height of the password pill
+    component RoundButton: Rectangle {
+        id: roundButton
+
+        property string icon
+        property color hoverColor: root.text
+        signal clicked()
+
+        width: 52 * root.u
+        height: width
+        radius: width / 2
+        color: area.containsMouse ? Qt.alpha(hoverColor, 0.85) : Qt.alpha(root.crust, 0.35)
+        border.width: 1
+        border.color: area.containsMouse ? "transparent" : Qt.alpha(root.text, 0.25)
+
+        Behavior on color {
+            ColorAnimation { duration: 150 }
+        }
+
+        Text {
+            anchors.centerIn: parent
+            text: roundButton.icon
+            color: area.containsMouse ? root.crust : root.text
+            font.family: "MesloLGM Nerd Font"
+            font.pixelSize: 20 * root.u
+        }
+
+        MouseArea {
+            id: area
+
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: roundButton.clicked()
         }
     }
 }

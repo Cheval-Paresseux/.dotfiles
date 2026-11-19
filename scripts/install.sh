@@ -23,12 +23,12 @@ PACKAGES=(
   xdg-desktop-portal-hyprland wl-clipboard cliphist grim slurp brightnessctl playerctl
   # Desktop applications
   zen-browser-bin kitty tmux yazi neovim ripgrep fd fish eza
-  # Bluetooth pairing agent of the bar
-  python-dbus python-gobject
+  # Bar services: battery, power profiles, Bluetooth pairing agent
+  upower power-profiles-daemon python-dbus python-gobject
   # Fonts
   ttf-meslo-nerd ttf-fantasque-nerd noto-fonts
-  # Development (base-devel compiles Neovim's tree-sitter parsers)
-  git github-cli rustup base-devel
+  # Development (base-devel compiles Neovim's tree-sitter parsers, Mason unpacks tools with unzip)
+  git github-cli rustup base-devel unzip
   # AUR helper
   paru
 )
