@@ -32,21 +32,14 @@ for app in "${APPS[@]}"; do
     exit 1
   fi
   target="$HOME/.config/$app"
-  if [ -e "$target" ] && [ ! -L "$target" ] && [ -e "$target.backup" ]; then
-    echo "Backup already exists: $target.backup"
+  if [ -e "$target" ] && [ ! -L "$target" ]; then
+    echo "$target is not a link from a theme: move or remove it first"
     exit 1
   fi
 done
 
 for app in "${APPS[@]}"; do
-  target="$HOME/.config/$app"
-
-  # A real directory (not one of our links) is kept as a backup
-  if [ -e "$target" ] && [ ! -L "$target" ]; then
-    mv "$target" "$target.backup"
-  fi
-
-  ln -sfn "$THEMES_DIR/$THEME/$app" "$target"
+  ln -sfn "$THEMES_DIR/$THEME/$app" "$HOME/.config/$app"
   echo "Linked $app"
 done
 
