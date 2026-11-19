@@ -75,7 +75,7 @@ since a rising load is not good news; only a high load is coloured.
 - Popups: Holonet with its relays (Wi-Fi), Droids, Public address (audio), Holonews with Closed session (notifications), Treasury with Austerity / Stable / Growth profiles, Session (power) with a gavel to shut down.
 - Pickers: the directory (apps), the ledger (clipboard), districts (wallpapers), systems (themes).
 - Fish greets you like a concierge ("Good evening, Senator …. The Exchange awaits you") and quotes the day's load index, the system load with its move against the last fifteen minutes. Neovim opens on an engraved, letter-spaced CORUSCANT under a small rising bar chart, between gold rules.
-- Wallpapers drawn for the theme: an Art Deco panel of gold fans with the exchange tower in a gilded arch, a ticker tape across the top and an index line climbing behind (the default), the skyline at dusk, the Galactic Core Index on the exchange boards, and the Senate chamber seen from a delegation pod.
+- Wallpapers: the spires of the government district at sunset (the default) and a rooftop above the night traffic.
 - Theme picker: the themes appear as planets; this one is a city-world, its night side covered in gold lights.
 
 ## Fonts

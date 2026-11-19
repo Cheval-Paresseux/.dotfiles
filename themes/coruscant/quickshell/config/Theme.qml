@@ -77,5 +77,5 @@ Singleton {
     readonly property int barItemHeight: 20
 
     readonly property string wallpaperDirectory: Quickshell.shellPath("assets/wallpapers")
-    readonly property string defaultWallpaper: wallpaperDirectory + "/deco.jpg"
+    readonly property string defaultWallpaper: wallpaperDirectory + "/city.jpg"
 }

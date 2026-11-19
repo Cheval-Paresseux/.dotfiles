@@ -9,9 +9,9 @@ PopupPanel {
 
     readonly property UPowerDevice device: BatteryService.device
     readonly property var profiles: [
-        { label: "Saver", icon: Icons.powerSaver, value: PowerProfile.PowerSaver, color: Theme.green },
-        { label: "Balanced", icon: Icons.balanced, value: PowerProfile.Balanced, color: Theme.blue },
-        { label: "Performance", icon: Icons.performance, value: PowerProfile.Performance, color: Theme.orange }
+        { label: "Saver", icon: Icons.powerSaver, value: PowerProfile.PowerSaver, color: Theme.success },
+        { label: "Balanced", icon: Icons.balanced, value: PowerProfile.Balanced, color: Theme.info },
+        { label: "Performance", icon: Icons.performance, value: PowerProfile.Performance, color: Theme.warning }
     ].filter(profile => profile.value !== PowerProfile.Performance || PowerProfiles.hasPerformanceProfile)
 
     PopupHeader {

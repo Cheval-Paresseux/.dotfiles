@@ -30,12 +30,16 @@ hl.on("hyprland.start", function()
 	-- Clipboard history
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
-
-	-- GTK dark mode
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'")
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGM Nerd Font 10'")
 end)
+
+-- GTK apps follow the theme: light mode, applied again when switch-theme.sh reloads the config
+local function apply_gtk_theme()
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGM Nerd Font 10'")
+end
+hl.on("hyprland.start", apply_gtk_theme)
+hl.on("config.reloaded", apply_gtk_theme)
 
 -----------------------
 ---- LOAD MODULES -----

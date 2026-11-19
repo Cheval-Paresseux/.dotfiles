@@ -18,10 +18,12 @@ themes/<theme>/
   yazi/        theme.toml
   README.md    palette, colour rules, shapes/icons, file map
 scripts/switch-theme.sh   <theme> | --list
+scripts/install.sh        packages, services, login shell, then the base theme
 ```
 
 `switch-theme.sh` reloads the running session: Hyprland, Quickshell (restart), kitty and
-Neovim (SIGUSR1), fish (the `dotfiles_theme` universal variable), tmux. Any new config
+Neovim (SIGUSR1), fish (the `dotfiles_theme` universal variable), tmux, and GTK's light/dark mode
+(`hyprland.lua` sets it on `config.reloaded`). Any new config
 that can reload live should hook into the same mechanism, in every theme. It also links each
 theme's `fish/fish_variables` (ignored by the root `.gitignore`) to `~/.local/state/fish/fish_variables`, so fish
 universal variables are shared by all themes.
@@ -87,7 +89,7 @@ role names, not raw hex, wherever the app allows it.
 3. **Propose packages, don't install them.** If a font, tool or package would clearly
    improve the design (a display font, a different Nerd Font, a helper tool), suggest it
    with the reason and what it would change. Only use it once the user has installed it
-   and confirmed the exact name (e.g. from `fc-list : family`).
+   and confirmed the exact name (e.g. from `fc-list : family`); then add it to `scripts/install.sh`.
 
 4. **Review the code** before reporting:
    - Remove leftovers from the base copy (unused colours/properties, stale comments mentioning base).
@@ -105,10 +107,11 @@ role names, not raw hex, wherever the app allows it.
 | fish | `fish -n` on every file |
 | kitty | `kitty +runpy` with `kitty.config.load_config(<path>)` |
 | yazi | `YAZI_CONFIG_HOME=themes/<t>/yazi yazi` starts without errors |
+| tmux | `tmux -L check -f themes/<t>/tmux/tmux.conf new-session -d`, then `tmux -L check kill-server` |
 | Switcher | `scripts/switch-theme.sh --list`; a live switch to the theme and back |
 | Visuals | screenshots with `grim` (window geometry from `hyprctl clients -j`) |
 
-Not installed here: tmux, ImageMagick/PIL (use ffmpeg for image work), node. Say when something
+Not installed here: ImageMagick/PIL (use ffmpeg for image work), node. Say when something
 could not be tested rather than assuming it works.
 
 ## Pitfalls met so far

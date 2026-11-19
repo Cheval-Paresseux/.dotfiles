@@ -13,7 +13,7 @@ PopupPanel {
         { label: "Suspend", icon: Icons.sleep, color: Theme.blue, command: ["systemctl", "suspend"] },
         { label: "Log out", icon: Icons.logout, color: Theme.yellow, command: ["uwsm", "stop"], confirm: true },
         { label: "Reboot", icon: Icons.restart, color: Theme.orange, command: ["systemctl", "reboot"], confirm: true },
-        { label: "Shut down", icon: Icons.power, color: Theme.red, command: ["systemctl", "poweroff"], confirm: true }
+        { label: "Shut down", icon: Icons.power, color: Theme.critical, command: ["systemctl", "poweroff"], confirm: true }
     ]
 
     property int selectedIndex: 0
