@@ -69,7 +69,7 @@ draws its own), loops muted, with the interface kept to the corners so the wallp
   and round reboot and shut down buttons (shut down turns red on hover).
 
 Each wallpaper brings its own accent (`accents` in `sddm/theme.conf`, one per video, taken from its colours):
-warm sunrise amber for the Star Destroyer, icy blue for the Venators. Small spaced-out uppercase
+sunset peach for the AT-AT in the desert, icy blue for the helmet in the snow, fiery orange for the X-Wing. Small spaced-out uppercase
 captions led by a short accent line ("Welcome back", "Session", the date) tie the corners together;
 "Wrong password" and "Caps Lock is on" replace the greeting, in red and yellow. A vignette and a soft
 text shadow keep everything readable on bright frames, and the interface fades in when the screen appears.
@@ -80,13 +80,13 @@ SDDM runs as its own user and cannot read the home directory, so the theme is co
 Preview it in a window from the desktop with `sddm-greeter-qt6 --test-mode --theme ~/.dotfiles/sddm`
 (power buttons are hidden in test mode).
 
-To add a wallpaper, prepare it like the others (debanded and re-encoded with a fine grain, which hides
-the compression blocks of low-bitrate downloads), save its first frame as a poster, and list it with an
-accent in `sddm/theme.conf`:
+To add a wallpaper, start from a clean high-bitrate source and strip its audio (an H.264 source is only
+remuxed, anything else re-encoded to H.264), save its first frame as a poster, and list it with an accent
+in `sddm/theme.conf`:
 
 ```bash
-ffmpeg -i <source> -vf "deband=1thr=0.015:2thr=0.015:3thr=0.015:range=22:blur=1,noise=c0s=3:c0f=t+u" \
-    -c:v libx264 -crf 18 -preset slow -tune grain -pix_fmt yuv420p -movflags +faststart -an sddm/<name>.mp4
+ffmpeg -i <source> -map 0:v:0 -c copy -movflags +faststart -an sddm/<name>.mp4   # H.264 source
+ffmpeg -i <source> -c:v libx264 -crf 18 -preset slow -pix_fmt yuv420p -movflags +faststart -an sddm/<name>.mp4
 ffmpeg -i sddm/<name>.mp4 -frames:v 1 -vf scale=1920:-1 -q:v 3 sddm/posters/<name>.jpg
 ```
 
