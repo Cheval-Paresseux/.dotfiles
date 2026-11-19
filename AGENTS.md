@@ -19,6 +19,8 @@ themes/<theme>/
   README.md    palette, colour rules, shapes/icons, file map
 scripts/switch-theme.sh   <theme> | --list
 scripts/install.sh        packages, services, login shell, then the base theme
+scripts/install-sddm.sh   copies sddm/ to /usr/share/sddm/themes/dotfiles and enables SDDM
+sddm/                     SDDM login screen (one for all themes: it runs before any session), live wallpapers
 ```
 
 `switch-theme.sh` reloads the running session: Hyprland, Quickshell (restart), kitty and
@@ -108,6 +110,7 @@ role names, not raw hex, wherever the app allows it.
 | kitty | `kitty +runpy` with `kitty.config.load_config(<path>)` |
 | yazi | `YAZI_CONFIG_HOME=themes/<t>/yazi yazi` starts without errors |
 | tmux | `tmux -L check -f themes/<t>/tmux/tmux.conf new-session -d`, then `tmux -L check kill-server` |
+| SDDM | `sddm-greeter-qt6 --test-mode --theme sddm` opens it in a window; kill it by PID afterwards |
 | Switcher | `scripts/switch-theme.sh --list`; a live switch to the theme and back |
 | Visuals | screenshots with `grim` (window geometry from `hyprctl clients -j`) |
 
@@ -129,4 +132,6 @@ could not be tested rather than assuming it works.
   to read on the background (ANSI "white" becomes a pale grey), and Neovim needs
   `vim.o.background = "light"`.
 - `pkill -f <pattern>` can match the shell running it; kill by PID from `hyprctl clients -j` or `pgrep`.
+- SDDM: a comma-separated `theme.conf` value arrives as a list (use `String(config.x)`); Qt Multimedia does not
+  resolve relative paths like `Image` does (use `Qt.resolvedUrl`).
 - Hyprland option names and defaults: `hyprctl descriptions -j`; Lua API stubs: `/usr/share/hypr/stubs/hl.meta.lua`.

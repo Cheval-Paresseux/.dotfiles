@@ -16,7 +16,9 @@ fi
 
 PACKAGES=(
   # Hyprland and session management
-  ly uwsm hyprland quickshell hypridle hyprpolkitagent
+  sddm uwsm hyprland quickshell hypridle hyprpolkitagent
+  # Video playback of the login screen
+  qt6-multimedia-ffmpeg
   # Wayland utilities
   xdg-desktop-portal-hyprland wl-clipboard cliphist grim slurp brightnessctl playerctl
   # Desktop applications
@@ -37,8 +39,7 @@ paru -S --needed "${AUR_PACKAGES[@]}"
 
 rustup default stable
 
-sudo systemctl enable ly@tty1.service
-sudo systemctl disable getty@tty1.service
+"$SCRIPTS/install-sddm.sh"
 
 fish_path="$(command -v fish)"
 if [ "$(getent passwd "$USER" | cut -d: -f7)" != "$fish_path" ]; then
@@ -56,4 +57,4 @@ done
 "$SCRIPTS/switch-theme.sh" base
 
 echo
-echo "Done. Reboot and pick the Hyprland (UWSM) session in Ly."
+echo "Done. Reboot and log in to the Hyprland (UWSM) session."

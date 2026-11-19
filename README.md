@@ -5,7 +5,7 @@
 | Component | Choice |
 |---|---|
 | OS | CachyOS |
-| Display Manager | Ly |
+| Display Manager | SDDM (own login screen in `sddm/`) |
 | Session Manager | UWSM |
 | Desktop Environment | Hyprland |
 | Bar, Notifications, Launcher | Quickshell |
@@ -49,14 +49,31 @@ sudo reboot
 - installs the packages of the desktop (Hyprland, Quickshell, apps, fonts, development tools) from
   the repositories, and the Oxanium font from the AUR with `paru`; the list is at the top of the script,
 - sets up Rust (`rustup default stable`, used by Neovim; language servers and formatters come from Mason),
-- starts Ly on tty1 instead of the console login,
+- installs the login screen and makes SDDM the display manager (`scripts/install-sddm.sh`),
 - makes fish the login shell,
 - deletes the default configs of a fresh install (`~/.config/fish`, `hypr`, `kitty`, `nvim`, `quickshell`,
   `tmux`, `yazi`, when they are real directories) and links the `base` theme in their place.
 
 It is meant for a fresh install: back up any of these directories you want to keep before running it.
 
-After rebooting, pick the **Hyprland (UWSM)** session in Ly.
+After rebooting, log in to the **Hyprland (UWSM)** session.
+
+## Login screen
+
+`sddm/` is the SDDM theme: one of its live wallpapers, picked at random on every start (each screen
+draws its own), loops muted, with the interface kept to the corners so the wallpaper stays in view:
+the clock and date at the top left, the session at the bottom left (click to cycle), and the user,
+an underlined password field, reboot and shut down at the bottom right. A light shading and a soft
+text shadow keep it readable on bright frames; colours are the base theme's. The wallpaper's first
+frame (`sddm/posters/`) shows while the video loads.
+
+SDDM runs as its own user and cannot read the home directory, so the theme is copied to
+`/usr/share/sddm/themes/dotfiles`: run `scripts/install-sddm.sh` again after editing it.
+Preview it in a window from the desktop with `sddm-greeter-qt6 --test-mode --theme ~/.dotfiles/sddm`
+(power buttons are hidden in test mode).
+
+To add a wallpaper, put the video in `sddm/`, its first frame in `sddm/posters/` under the same name
+(`ffmpeg -i <video> -frames:v 1 -vf scale=1920:-1 sddm/posters/<name>.jpg`) and list it in `sddm/theme.conf`.
 
 Bluetooth pairing works from the bar's Bluetooth popup: the shell runs a small BlueZ pairing agent
 (`quickshell/scripts/bt-agent.py`) and shows the code to type on a keyboard, or asks to confirm one, inside the popup.
