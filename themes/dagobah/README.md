@@ -5,7 +5,7 @@ light for whatever has your attention, the colour Luke trains with in the
 swamp. Shapes are soft and rounded, motion is patient, and the wording leans
 on the light side: visions, meditation, patience and the swamp itself.
 
-Switch to it with `SUPER + T` or `~/.config/dotfiles/scripts/switch-theme.sh dagobah`.
+Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh dagobah`.
 
 ## How colour is used
 

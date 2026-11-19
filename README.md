@@ -146,11 +146,10 @@ gh auth login
 ## 2. Dotfiles
 
 ```bash
-cd ~/.config
-git clone https://github.com/Cheval-Paresseux/dotfiles.git
+git clone https://github.com/Cheval-Paresseux/dotfiles.git ~/.dotfiles
 
-chmod +x ~/.config/dotfiles/scripts/switch-theme.sh
-~/.config/dotfiles/scripts/switch-theme.sh base
+chmod +x ~/.dotfiles/scripts/switch-theme.sh
+~/.dotfiles/scripts/switch-theme.sh base
 
 sudo reboot
 ```

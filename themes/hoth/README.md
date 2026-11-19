@@ -7,7 +7,7 @@ Vader's red for danger. Shapes sit between the square Empire and the soft
 swamp, glass is frosted with ice crystals, and the wording belongs to a base
 holding out against the cold and the walkers.
 
-Switch to it with `SUPER + T` or `~/.config/dotfiles/scripts/switch-theme.sh hoth`.
+Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh hoth`.
 
 ## How colour is used
 

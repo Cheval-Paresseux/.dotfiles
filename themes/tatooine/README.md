@@ -4,7 +4,7 @@ A desert world on the Outer Rim: dusk-warm browns, sand-coloured text and
 twin-sun accents. Shapes are rounded like adobe domes, the wording leans on
 smugglers, droids and transmissions, and colour keeps one job per meaning.
 
-Switch to it with `SUPER + T` or `~/.config/dotfiles/scripts/switch-theme.sh tatooine`.
+Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh tatooine`.
 
 ## How colour is used
 

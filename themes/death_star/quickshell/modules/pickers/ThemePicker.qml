@@ -6,7 +6,7 @@ import qs.config
 PickerWindow {
     id: root
 
-    readonly property string script: Quickshell.env("HOME") + "/.config/dotfiles/scripts/switch-theme.sh"
+    readonly property string script: Quickshell.env("HOME") + "/.dotfiles/scripts/switch-theme.sh"
 
     property var themes: []
     readonly property var results: query ? themes.filter(theme => theme.name.includes(query)) : themes

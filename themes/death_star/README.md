@@ -6,7 +6,7 @@ destroys. Shapes are hard and angular, cut like the trapezoid viewports of
 the bridge, motion is heavy and abrupt, and the wording speaks in Imperial
 command and security.
 
-Switch to it with `SUPER + T` or `~/.config/dotfiles/scripts/switch-theme.sh death_star`.
+Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh death_star`.
 
 ## How colour is used
 

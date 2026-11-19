@@ -9,7 +9,7 @@ double rules, cut corners and ◆ ornaments. Glass is tinted champagne, motion i
 slow and smooth, and headlines are set in fine, widely spaced capitals. The wording
 belongs to the Exchange and the Senate.
 
-Switch to it with `SUPER + T` or `~/.config/dotfiles/scripts/switch-theme.sh coruscant`.
+Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh coruscant`.
 
 ## How colour is used
 

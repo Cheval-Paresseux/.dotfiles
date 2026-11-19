@@ -3,7 +3,7 @@
 # Usage: switch-theme.sh <theme>
 #        switch-theme.sh --list    (one "name<TAB>planet image" line per theme)
 
-THEMES_DIR="$HOME/.config/dotfiles/themes"
+THEMES_DIR="$(dirname "$(dirname "$(realpath "$0")")")/themes"
 APPS=(fish hypr kitty nvim quickshell tmux yazi)
 THEME="$1"
 
