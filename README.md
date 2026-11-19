@@ -61,17 +61,20 @@ After rebooting, log in to the **Hyprland (UWSM)** session.
 ## Login screen
 
 `sddm/` is the SDDM theme: one of its live wallpapers, picked at random on every start (each screen
-draws its own), loops muted, with the interface kept to the corners so the wallpaper stays in view:
+draws its own), loops muted, with the interface kept to the corners so the wallpaper stays in view.
+It is styled as a starship terminal: Oxanium throughout, uppercase and letter-spaced like stencilled
+hull markings, and panels with their top-left and bottom-right corners cut instead of rounded.
 
 - top left: a large thin clock, its colon in the accent, over the date;
 - bottom left: the session, cycled with the arrows or a click on its name;
-- bottom right: the user, a dark glass password pill whose submit button lights up in the accent,
-  and round reboot and shut down buttons (shut down turns red on hover).
+- bottom right: the user, a dark glass "Access code" panel with a status light on its left edge and a
+  submit button that light up in the accent, and cut-corner reboot and shut down buttons
+  (shut down turns red on hover).
 
 Each wallpaper brings its own accent (`accents` in `sddm/theme.conf`, one per video, taken from its colours):
-sunset peach for the AT-AT in the desert, icy blue for the helmet in the snow, fiery orange for the X-Wing. Small spaced-out uppercase
-captions led by a short accent line ("Welcome back", "Session", the date) tie the corners together;
-"Wrong password" and "Caps Lock is on" replace the greeting, in red and yellow. A vignette and a soft
+sunset peach for the AT-AT in the desert, icy blue for the helmet in the snow, fiery orange for the X-Wing.
+Small captions led by an accent tick and line ("Security clearance", "Session", the date) tie the corners
+together; "Access denied" and "Caps Lock is on" replace the greeting, in red and yellow. A vignette and a soft
 text shadow keep everything readable on bright frames, and the interface fades in when the screen appears.
 The wallpaper's first frame (`sddm/posters/`) shows while the video loads.
 

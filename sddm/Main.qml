@@ -4,14 +4,15 @@ import QtQuick.Shapes
 import QtMultimedia
 
 // Login screen: one of the live wallpapers (picked at random), with the clock, session and login in the corners.
-// Each wallpaper brings its own accent colour (theme.conf); the rest is the base theme's neutrals.
+// Styled as a starship terminal: Oxanium stencil type, cut-corner panels, and the wallpaper's accent (theme.conf).
 Rectangle {
     id: root
 
-    readonly property color crust: "#111111"
-    readonly property color text: "#f2f2f2"
+    readonly property color crust: "#0a0c0f"
+    readonly property color text: "#ece8e1"
     readonly property color warning: "#ecd06f"
-    readonly property color critical: "#f7768e"
+    readonly property color critical: "#ff5f56"
+    readonly property string font: "Oxanium"
 
     // SDDM reads a comma-separated value as a list; String() joins it back either way
     readonly property var videos: String(config.videos).split(",")
@@ -105,7 +106,7 @@ Rectangle {
                 focalX: centerX
                 focalY: centerY
                 GradientStop { position: 0.45; color: "transparent" }
-                GradientStop { position: 1.0; color: Qt.alpha(root.crust, 0.7) }
+                GradientStop { position: 1.0; color: Qt.alpha(root.crust, 0.75) }
             }
             PathRectangle { width: root.width; height: root.height }
         }
@@ -125,21 +126,22 @@ Rectangle {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.margins: root.margin
-            spacing: 10 * root.u
+            spacing: 14 * root.u
             layer.enabled: true
             layer.effect: Shadow {}
 
             Text {
                 id: clock
 
-                // The thin weight's side bearing pushes the digits right; pull them back onto the margin
-                x: -16 * root.u
+                // Pull the digits' side bearing back onto the margin
+                x: -10 * root.u
                 textFormat: Text.StyledText
                 color: root.text
-                font.family: "Noto Sans"
-                font.weight: Font.Thin
-                font.pixelSize: 168 * root.u
-                font.letterSpacing: -4 * root.u
+                font.family: root.font
+                font.weight: Font.ExtraLight
+                font.pixelSize: 150 * root.u
+                font.letterSpacing: 2 * root.u
+                font.features: { "tnum": 1 }
             }
 
             Caption {
@@ -186,9 +188,10 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     text: root.session ? root.session.name : ""
                     color: root.text
-                    font.family: "Noto Sans"
-                    font.weight: Font.Light
-                    font.pixelSize: 20 * root.u
+                    font.family: root.font
+                    font.pixelSize: 19 * root.u
+                    font.letterSpacing: 2 * root.u
+                    font.capitalization: Font.AllUppercase
 
                     MouseArea {
                         anchors.fill: parent
@@ -214,15 +217,18 @@ Rectangle {
             layer.enabled: true
             layer.effect: Shadow {}
 
+            // Letter spacing trails the last letter: shift right-aligned labels onto the panel's edge
             Caption {
                 anchors.right: parent.right
-                text: root.failed ? "Wrong password" : (keyboard.capsLock ? "Caps Lock is on" : "Welcome back")
+                anchors.rightMargin: -5 * root.u
+                text: root.failed ? "Access denied" : (keyboard.capsLock ? "Caps Lock is on" : "Security clearance")
                 lineColor: root.failed ? root.critical : (keyboard.capsLock ? root.warning : root.accent)
             }
 
             // The name cycles through the users when there are several
             Row {
                 anchors.right: parent.right
+                anchors.rightMargin: -8 * root.u
                 spacing: 14 * root.u
 
                 IconButton {
@@ -235,9 +241,11 @@ Rectangle {
                 Text {
                     text: root.user ? root.user.realName || root.user.name : ""
                     color: root.text
-                    font.family: "Noto Sans"
+                    font.family: root.font
                     font.weight: Font.Light
-                    font.pixelSize: 40 * root.u
+                    font.pixelSize: 38 * root.u
+                    font.letterSpacing: 8 * root.u
+                    font.capitalization: Font.AllUppercase
                 }
 
                 IconButton {
@@ -255,22 +263,16 @@ Rectangle {
 
             Row {
                 anchors.right: parent.right
-                spacing: 12 * root.u
+                spacing: 10 * root.u
 
-                // Dark glass pill: reads on bright frames, the wallpaper stays visible through it
-                Rectangle {
+                // Dark glass panel: reads on bright frames, the wallpaper stays visible through it
+                Chamfer {
                     width: 340 * root.u
                     height: 52 * root.u
-                    radius: height / 2
-                    color: Qt.alpha(root.crust, password.activeFocus ? 0.45 : 0.35)
-                    border.width: 1
-                    border.color: root.failed ? root.critical
-                        : (password.text !== "" ? Qt.alpha(root.accent, 0.8) : Qt.alpha(root.text, 0.25))
+                    fill: Qt.alpha(root.crust, password.activeFocus ? 0.5 : 0.4)
+                    stroke: root.failed ? root.critical
+                        : (password.text !== "" ? Qt.alpha(root.accent, 0.8) : Qt.alpha(root.text, 0.3))
                     transform: Translate { id: shakeOffset }
-
-                    Behavior on border.color {
-                        ColorAnimation { duration: 200 }
-                    }
 
                     SequentialAnimation {
                         id: shake
@@ -281,20 +283,35 @@ Rectangle {
                         NumberAnimation { target: shakeOffset; property: "x"; to: 0; duration: 45 }
                     }
 
+                    // Status light on the left edge: accent while typing, red after a failure
+                    Rectangle {
+                        anchors.left: parent.left
+                        anchors.leftMargin: 10 * root.u
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 3 * root.u
+                        height: parent.height * 0.4
+                        color: root.failed ? root.critical
+                            : (password.text !== "" ? root.accent : Qt.alpha(root.text, 0.3))
+
+                        Behavior on color {
+                            ColorAnimation { duration: 200 }
+                        }
+                    }
+
                     TextInput {
                         id: password
 
                         anchors.fill: parent
-                        anchors.leftMargin: 24 * root.u
+                        anchors.leftMargin: 26 * root.u
                         anchors.rightMargin: 56 * root.u
                         verticalAlignment: TextInput.AlignVCenter
                         echoMode: TextInput.Password
-                        passwordCharacter: "●"
+                        passwordCharacter: "■"
                         color: root.text
                         selectionColor: Qt.alpha(root.accent, 0.4)
-                        font.family: "Noto Sans"
-                        font.pixelSize: 14 * root.u
-                        font.letterSpacing: 4 * root.u
+                        font.family: root.font
+                        font.pixelSize: 11 * root.u
+                        font.letterSpacing: 6 * root.u
                         clip: true
                         focus: true
                         onTextChanged: if (text !== "") root.failed = false
@@ -304,51 +321,36 @@ Rectangle {
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
                             visible: password.text === ""
-                            text: "Password"
-                            color: Qt.alpha(root.text, 0.7)
-                            font.family: "Noto Sans"
-                            font.weight: Font.Light
-                            font.pixelSize: 17 * root.u
+                            text: "Access code"
+                            color: Qt.alpha(root.text, 0.6)
+                            font.family: root.font
+                            font.pixelSize: 15 * root.u
+                            font.letterSpacing: 3 * root.u
+                            font.capitalization: Font.AllUppercase
                         }
                     }
 
                     // Submit: lights up in the accent once there is something to send
-                    Rectangle {
+                    HudButton {
                         anchors.right: parent.right
                         anchors.rightMargin: 7 * root.u
                         anchors.verticalCenter: parent.verticalCenter
                         width: 38 * root.u
-                        height: width
-                        radius: width / 2
-                        color: password.text !== "" ? root.accent : Qt.alpha(root.text, 0.12)
-
-                        Behavior on color {
-                            ColorAnimation { duration: 200 }
-                        }
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: root.glyph(0xF0054)
-                            color: password.text !== "" ? root.crust : Qt.alpha(root.text, 0.7)
-                            font.family: "MesloLGM Nerd Font"
-                            font.pixelSize: 18 * root.u
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: root.login()
-                        }
+                        cut: 7 * root.u
+                        icon: root.glyph(0xF0054)
+                        lit: password.text !== ""
+                        hoverColor: root.accent
+                        onClicked: root.login()
                     }
                 }
 
-                RoundButton {
+                HudButton {
                     visible: sddm.canReboot
                     icon: root.glyph(0xF0709)
                     onClicked: sddm.reboot()
                 }
 
-                RoundButton {
+                HudButton {
                     visible: sddm.canPowerOff
                     icon: root.glyph(0xF0425)
                     hoverColor: root.critical
@@ -367,32 +369,70 @@ Rectangle {
         shadowVerticalOffset: 1
     }
 
-    // Small spaced-out uppercase label led by a short line in the accent
+    // Panel with its top-left and bottom-right corners cut, like a ship's display
+    component Chamfer: Shape {
+        id: chamfer
+
+        property real cut: 12 * root.u
+        property color fill
+        property color stroke
+
+        preferredRendererType: Shape.CurveRenderer
+
+        Behavior on fill {
+            ColorAnimation { duration: 150 }
+        }
+
+        Behavior on stroke {
+            ColorAnimation { duration: 200 }
+        }
+
+        ShapePath {
+            fillColor: chamfer.fill
+            strokeColor: chamfer.stroke
+            strokeWidth: 1
+            startX: chamfer.cut
+            startY: 0
+            PathLine { x: chamfer.width; y: 0 }
+            PathLine { x: chamfer.width; y: chamfer.height - chamfer.cut }
+            PathLine { x: chamfer.width - chamfer.cut; y: chamfer.height }
+            PathLine { x: 0; y: chamfer.height }
+            PathLine { x: 0; y: chamfer.cut }
+            PathLine { x: chamfer.cut; y: 0 }
+        }
+    }
+
+    // Small stencilled uppercase label led by an accent tick and line
     component Caption: Row {
+        id: caption
+
         property alias text: label.text
-        property alias lineColor: line.color
+        property color lineColor: root.accent
 
-        spacing: 14 * root.u
+        spacing: 6 * root.u
 
-        Rectangle {
-            id: line
+        Repeater {
+            model: [6, 22]
 
-            anchors.verticalCenter: parent.verticalCenter
-            width: 28 * root.u
-            height: Math.max(1, 2 * root.u)
-            radius: height / 2
-            color: root.accent
+            Rectangle {
+                required property int modelData
+
+                anchors.verticalCenter: parent.verticalCenter
+                width: modelData * root.u
+                height: Math.max(1, 2 * root.u)
+                color: caption.lineColor
+            }
         }
 
         Text {
             id: label
 
+            leftPadding: 8 * root.u
             color: root.text
-            opacity: 0.95
-            font.family: "Noto Sans"
+            font.family: root.font
             font.weight: Font.Medium
             font.pixelSize: 13 * root.u
-            font.letterSpacing: 4 * root.u
+            font.letterSpacing: 5 * root.u
             font.capitalization: Font.AllUppercase
         }
     }
@@ -419,29 +459,26 @@ Rectangle {
         }
     }
 
-    // Circle the height of the password pill
-    component RoundButton: Rectangle {
-        id: roundButton
+    // Square cut-corner button the height of the password panel; lit or hovered, it fills with its colour
+    component HudButton: Chamfer {
+        id: hudButton
 
         property string icon
         property color hoverColor: root.text
+        property bool lit: false
+        readonly property bool active: lit || area.containsMouse
         signal clicked()
 
         width: 52 * root.u
         height: width
-        radius: width / 2
-        color: area.containsMouse ? Qt.alpha(hoverColor, 0.85) : Qt.alpha(root.crust, 0.35)
-        border.width: 1
-        border.color: area.containsMouse ? "transparent" : Qt.alpha(root.text, 0.25)
-
-        Behavior on color {
-            ColorAnimation { duration: 150 }
-        }
+        cut: 9 * root.u
+        fill: active ? Qt.alpha(hoverColor, 0.9) : Qt.alpha(root.crust, 0.4)
+        stroke: active ? "transparent" : Qt.alpha(root.text, 0.3)
 
         Text {
             anchors.centerIn: parent
-            text: roundButton.icon
-            color: area.containsMouse ? root.crust : root.text
+            text: hudButton.icon
+            color: hudButton.active ? root.crust : root.text
             font.family: "MesloLGM Nerd Font"
             font.pixelSize: 20 * root.u
         }
@@ -452,7 +489,7 @@ Rectangle {
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
-            onClicked: roundButton.clicked()
+            onClicked: hudButton.clicked()
         }
     }
 }
