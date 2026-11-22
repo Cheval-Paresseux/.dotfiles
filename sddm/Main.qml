@@ -86,7 +86,7 @@ Rectangle {
 
     Video {
         anchors.fill: parent
-        source: Qt.resolvedUrl(root.video)
+        source: Qt.resolvedUrl("videos/" + root.video)
         fillMode: VideoOutput.PreserveAspectCrop
         loops: MediaPlayer.Infinite
         muted: true
