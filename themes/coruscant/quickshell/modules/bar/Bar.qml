@@ -100,6 +100,7 @@ Scope {
                 NetworkButton {}
                 BluetoothButton {}
                 AudioButton {}
+                BrightnessButton {}
                 BatteryButton {}
                 BarDivider {}
                 PowerButton {

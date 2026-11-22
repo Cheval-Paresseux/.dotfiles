@@ -56,7 +56,7 @@ PopupPanel {
                 icon: modelData.connected ? Icons.bluetoothConnected : Icons.bluetooth
                 title: modelData.name
                 subtitle: root.status(modelData)
-                trailing: modelData.batteryAvailable ? Math.round(modelData.battery * 100) + "%" : ""
+                trailing: modelData.batteryAvailable ? Format.percent(modelData.battery) : ""
                 active: modelData.connected
 
                 onClicked: mouse => {

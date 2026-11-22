@@ -68,6 +68,7 @@ Scope {
                 NetworkButton {}
                 BluetoothButton {}
                 AudioButton {}
+                BrightnessButton {}
                 BatteryButton {}
                 PowerButton {
                     screen: bar.modelData

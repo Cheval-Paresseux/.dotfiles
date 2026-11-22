@@ -34,7 +34,8 @@ The system side is left to the installer and to you; check it works before going
 - graphics and other drivers,
 - networking: `systemctl status NetworkManager` (`nmcli` is used by the bar),
 - Bluetooth: `systemctl status bluetooth`,
-- audio: `systemctl --user status pipewire pipewire-pulse wireplumber`, `wpctl status`.
+- audio: `systemctl --user status pipewire pipewire-pulse wireplumber`, `wpctl status`,
+- screen brightness: `brightnessctl -c backlight info` (the bar hides its brightness button without a backlight).
 
 ## 2. Desktop environment
 

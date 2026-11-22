@@ -105,7 +105,7 @@ role names, not raw hex, wherever the app allows it.
 |---|---|
 | Quickshell | run the theme's copy: `qs -p themes/<t>/quickshell -d`, open popups via `qs -p … ipc call <target> toggle`, read `qs -p … log` for QML errors; restore the live shell with `qs kill; qs -d` |
 | Hyprland | `Hyprland --verify-config --config themes/<t>/hypr/hyprland.lua`; for the live config `hyprctl reload && hyprctl configerrors` |
-| Neovim | start with `XDG_CONFIG_HOME` pointing at a dir whose `nvim` links to the theme; check highlights, LSP clients and plugins load; format with `stylua` (`stylua --check .`) |
+| Neovim | start with `XDG_CONFIG_HOME` pointing at a dir whose `nvim` links to the theme; check highlights, LSP clients and plugins load; format with `stylua` (`stylua --check .`; it is in `~/.local/share/nvim/mason/bin`, not on PATH) |
 | fish | `fish -n` on every file |
 | kitty | `kitty +runpy` with `kitty.config.load_config(<path>)` |
 | yazi | `YAZI_CONFIG_HOME=themes/<t>/yazi yazi` starts without errors |
@@ -134,4 +134,8 @@ could not be tested rather than assuming it works.
 - `pkill -f <pattern>` can match the shell running it; kill by PID from `hyprctl clients -j` or `pgrep`.
 - SDDM: a comma-separated `theme.conf` value arrives as a list (use `String(config.x)`); Qt Multimedia does not
   resolve relative paths like `Image` does (use `Qt.resolvedUrl`).
+- A test instance (`qs -p …`) can take over the IPC lookup of the live shell: every `qs ipc call` keybind
+  (Super+T, lock, power) then fails. After testing, kill the live `qs` by PID, start it with `qs -d`, and check `qs ipc show`.
+- `Hyprland --verify-config` runs the config's `config.reloaded` handlers, so it changes the live GTK settings
+  (`gsettings`): verify the live theme last, or restore it afterwards.
 - Hyprland option names and defaults: `hyprctl descriptions -j`; Lua API stubs: `/usr/share/hypr/stubs/hl.meta.lua`.

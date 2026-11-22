@@ -64,7 +64,7 @@ the ANSI colours are darkened to read on snow (ANSI "white" is a pale grey).
 - Labels on the bar and lock screen are uppercase, letter-spaced Oxanium, like Echo Base's hangar markings.
 - Bar icons: mountains (wallpapers), Rebel crest (apps), heater (keep awake), alarm light (alerts), R2 unit (Bluetooth), AT-AT (power).
 - Emblems: the crossed sabers of the duel above the lock screen, and a faint R2 unit or AT-AT in empty Bluetooth and alert lists.
-- Popups: Comms (Wi-Fi), Droids, Sound, Alerts with Lie low (notifications), Generator with Low heat / Standard / Full power profiles, Evacuation (power) with a snowflake to shut down.
+- Popups: Comms (Wi-Fi), Droids, Sound, Glare (brightness), Alerts with Lie low (notifications), Generator with Low heat / Standard / Full power profiles, Evacuation (power) with a snowflake to shut down.
 - Pickers: Echo Base (apps), the logs (clipboard), the snowfields (wallpapers), systems (themes).
 - Lock screen: "Echo Base", "Clearance code", "Clearance refused".
 - Fish greets you in an ice storm; Neovim opens on a HOTH banner.

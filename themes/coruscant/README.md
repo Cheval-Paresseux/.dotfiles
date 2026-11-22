@@ -72,7 +72,7 @@ since a rising load is not good news; only a high load is coloured.
 - kitty tabs are quiet labels set apart by gold ◆, the active one in gold capitals; lualine sections end in pixel blocks like an LED ticker board.
 - Bar icons: city (wallpapers), bank (apps), briefcase with a clock (keep awake: working late), newspaper (bulletins), robot (Bluetooth), gavel (power).
 - Emblems: a faint protocol droid or skyline in empty Bluetooth and notification lists.
-- Popups: Holonet with its relays (Wi-Fi), Droids, Public address (audio), Holonews with Closed session (notifications), Treasury with Austerity / Stable / Growth profiles, Session (power) with a gavel to shut down.
+- Popups: Holonet with its relays (Wi-Fi), Droids, Public address (audio), Skylight (brightness), Holonews with Closed session (notifications), Treasury with Austerity / Stable / Growth profiles, Session (power) with a gavel to shut down.
 - Pickers: the directory (apps), the ledger (clipboard), districts (wallpapers), systems (themes).
 - Fish greets you like a concierge ("Good evening, Senator …. The Exchange awaits you") and quotes the day's load index, the system load with its move against the last fifteen minutes. Neovim opens on an engraved, letter-spaced CORUSCANT under a small rising bar chart, between gold rules.
 - Wallpapers: the spires of the government district at sunset (the default) and a rooftop above the night traffic.

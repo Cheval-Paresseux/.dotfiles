@@ -15,10 +15,6 @@ return {
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    styles = {
-      notification = { border = "single" },
-      input = { border = "single" },
-    },
     dashboard = {
       preset = {
         header = [[

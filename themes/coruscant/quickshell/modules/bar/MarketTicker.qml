@@ -156,7 +156,7 @@ Row {
 
         // Ticker arrows stay neutral: a rising load is not good news, a high one needs attention
         Label {
-            text: Math.round(quote.value * 100) + "% " + (quote.move > 0.01 ? "▲" : (quote.move < -0.01 ? "▼" : "▪"))
+            text: Format.percent(quote.value) + " " + (quote.move > 0.01 ? "▲" : (quote.move < -0.01 ? "▼" : "▪"))
             color: quote.value > 0.9 ? Theme.critical : (quote.value > 0.75 ? Theme.warning : Theme.textMuted)
         }
     }

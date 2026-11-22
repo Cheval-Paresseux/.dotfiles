@@ -59,7 +59,7 @@ Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh dagobah`.
 - Hand-drawn letters: Fantasque Sans Mono in the terminal, clock, popup titles and lock screen.
 - Bar icons: pine tree (wallpapers), Jedi crest (apps), hut lamp (keep awake), lotus (visions), R2 unit (Bluetooth), Luke's saber hilt (power).
 - Emblems: a glowing Jedi crest above the lock screen, and a faint R2 unit or X-wing in empty Bluetooth and notification lists.
-- Popups: Comlink (Wi-Fi), Droids, Listen (audio), Visions with Meditate (notifications), Energy with Rest / Balance / Focus profiles, a candle to shut down.
+- Popups: Comlink (Wi-Fi), Droids, Listen (audio), Light (brightness), Visions with Meditate (notifications), Energy with Rest / Balance / Focus profiles, a candle to shut down.
 - Pickers: "What do you seek?" (apps), memories (clipboard), the marsh (wallpapers).
 - Lock screen: "Sanctuary", "Passphrase", "Listening to the Force...", "Passphrase rejected".
 - Fish greets you with mist over the hut; Neovim opens on a DAGOBAH banner.

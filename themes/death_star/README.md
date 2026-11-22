@@ -62,7 +62,7 @@ saber red), because command-line tools use it for errors and deletions.
 - Labels on the bar and lock screen are uppercase, letter-spaced Oxanium, like stencilled hull markings.
 - Bar icons: the Death Star (wallpapers), Imperial crest (apps), sentry eye (caffeine), uplink / broadcast (dispatches), industrial droid (Bluetooth), Vader's helmet (power).
 - Emblems: a glowing Vader helmet above the lock screen, and a faint AT-AT or TIE fighter in empty Bluetooth and notification lists.
-- Popups: Holonet (Wi-Fi), Droids, Intercom (audio), Dispatches with Silent running (notifications), Reactor with Reserve / Standard / Overdrive profiles, Command (power) with the Sith emblem for shut down.
+- Popups: Holonet (Wi-Fi), Droids, Intercom (audio), Floodlights (brightness), Dispatches with Silent running (notifications), Reactor with Reserve / Standard / Overdrive profiles, Command (power) with the Sith emblem for shut down.
 - Pickers: the armory (apps), intercepted data (clipboard), surveillance feeds (wallpapers), sectors (themes).
 - Lock screen: "Imperial security", "Authorization code", "Clearance denied".
 - Fish greets you as a Sith lord with the reactor online; Neovim opens on a DEATH STAR banner.

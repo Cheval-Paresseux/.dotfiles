@@ -1,6 +1,5 @@
 import Quickshell.Services.Pipewire
 import QtQuick
-import QtQuick.Controls
 import qs.components
 import qs.config
 import qs.services
@@ -33,46 +32,19 @@ Item {
         onClicked: root.node.audio.muted = !root.node.audio.muted
     }
 
-    Slider {
-        id: slider
-
+    PopupSlider {
         anchors.left: muteButton.right
         anchors.leftMargin: 10
         anchors.right: percent.left
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
-        height: 20
-        from: 0
-        to: 1
-        stepSize: 0.01
         enabled: root.ready
+        dimmed: root.muted
         value: root.ready ? root.node.audio.volume : 0
 
         onMoved: {
             root.node.audio.volume = value
             root.node.audio.muted = false
-        }
-
-        background: Rectangle {
-            x: slider.leftPadding
-            y: slider.topPadding + slider.availableHeight / 2 - height / 2
-            width: slider.availableWidth
-            height: 4
-            color: Theme.surface
-
-            Rectangle {
-                width: slider.visualPosition * parent.width
-                height: parent.height
-                color: root.muted ? Theme.textDisabled : Theme.accent
-            }
-        }
-
-        handle: Rectangle {
-            x: slider.leftPadding + slider.visualPosition * (slider.availableWidth - width)
-            y: slider.topPadding + slider.availableHeight / 2 - height / 2
-            width: 8
-            height: 16
-            color: slider.pressed ? Theme.text : Theme.accent
         }
     }
 

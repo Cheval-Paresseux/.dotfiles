@@ -12,10 +12,9 @@ return {
       appearance = { nerd_font_variant = "mono" },
       completion = {
         accept = { auto_brackets = { enabled = true } },
-        menu = { border = "rounded", draw = { treesitter = { "lsp" } } },
-        documentation = { auto_show = true, auto_show_delay_ms = 200, window = { border = "rounded" } },
+        menu = { draw = { treesitter = { "lsp" } } },
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
       },
-      signature = { window = { border = "rounded" } },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
         per_filetype = { lua = { inherit_defaults = true, "lazydev" } },

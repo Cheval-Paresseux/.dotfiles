@@ -9,10 +9,9 @@ return {
     opts_extend = { "ensure_installed" },
     opts = {
       ensure_installed = { "stylua", "shfmt", "tree-sitter-cli" }, -- tools that are not language servers
-      ui = { border = "single" },
     },
     config = function(_, opts)
-      require("mason").setup({ ui = opts.ui })
+      require("mason").setup()
       local registry = require("mason-registry")
       registry.refresh(function()
         for _, name in ipairs(opts.ensure_installed) do
@@ -39,7 +38,6 @@ return {
         underline = true,
         update_in_insert = false,
         virtual_text = { spacing = 4, prefix = "●" },
-        float = { border = "single" },
         signs = {
           text = {
             [vim.diagnostic.severity.ERROR] = " ",

@@ -42,6 +42,10 @@ Singleton {
     readonly property string volumeMedium: glyph(0xF0580)
     readonly property string volumeHigh: glyph(0xF057E)
 
+    readonly property string brightnessLow: glyph(0xF00DE)
+    readonly property string brightnessMedium: glyph(0xF00DF)
+    readonly property string brightnessHigh: glyph(0xF00E0)
+
     readonly property string lockOutline: glyph(0xF0341)
     readonly property string magnify: glyph(0xF0349)
 
@@ -68,6 +72,12 @@ Singleton {
         if (level < 0.34)
             return volumeLow
         return level < 0.67 ? volumeMedium : volumeHigh
+    }
+
+    function brightness(level) {
+        if (level < 0.34)
+            return brightnessLow
+        return level < 0.67 ? brightnessMedium : brightnessHigh
     }
 
     function battery(level, charging) {

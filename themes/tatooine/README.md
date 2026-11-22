@@ -58,7 +58,7 @@ Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh tatooine`.
 - Labels in the bar and on the lock screen are uppercase and letter-spaced, like spaceport signage.
 - Bar icons: twin sunset (wallpapers), Rebel insignia (apps), cantina glass (caffeine), antenna / uplink (transmissions), R2 unit (Bluetooth droids), Mandalorian helmet (power).
 - Emblems: the Mandalorian helmet above the lock screen, and a faint TIE fighter or R2 unit in empty notification and Bluetooth lists.
-- Popups: Comms (Wi-Fi), Droids (Bluetooth), Transmissions with Radio silence (notifications), Power cell with Conserve / Balanced / Boost profiles, a vault to lock and the Death Star to shut down.
+- Popups: Comms (Wi-Fi), Droids (Bluetooth), Twin suns (brightness), Transmissions with Radio silence (notifications), Power cell with Conserve / Balanced / Boost profiles, a vault to lock and the Death Star to shut down.
 - Lock screen: "Restricted area", "Access code", "Access denied".
 - Fish greets you under twin suns; Neovim opens on a TATOOINE banner.
 - Theme picker: the themes appear as planets; this one is a sand planet with dune seas under its twin suns.
