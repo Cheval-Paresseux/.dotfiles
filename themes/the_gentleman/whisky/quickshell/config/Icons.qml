@@ -10,7 +10,6 @@ Singleton {
     readonly property string cigar: glyph(0xF1189)
     readonly property string cigarOff: glyph(0xF141B)
     readonly property string glass: glyph(0xF02A8)
-    readonly property string recordPlayer: glyph(0xF099A)
     readonly property string record: glyph(0xF0025)
     readonly property string tray: glyph(0xF1294)
     readonly property string guests: glyph(0xF156F) // an empty armchair

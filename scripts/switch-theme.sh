@@ -14,7 +14,7 @@ theme_dirs() {
 
 if [ "$THEME" = "--list" ]; then
   # base is the template for new themes: still switchable by name, but not offered in the picker
-  theme_dirs | grep -vx "$THEMES_DIR/base" | while read -r dir; do
+  theme_dirs | grep -vxF "$THEMES_DIR/base" | while read -r dir; do
     group="$(dirname "$dir")"
     [ "$group" = "$THEMES_DIR" ] && group=""
     printf '%s\t%s\t%s\n' "$(basename "$dir")" "$dir/quickshell/assets/emblem.svg" "$(basename "$group")"
@@ -27,7 +27,7 @@ if [ -z "$THEME" ]; then
   exit 1
 fi
 
-THEME_DIR="$(theme_dirs | grep -m1 "/$THEME\$")"
+THEME_DIR="$(theme_dirs | awk -F/ -v name="$THEME" '$NF == name { print; exit }')"
 if [ -z "$THEME_DIR" ]; then
   echo "Unknown theme: $THEME (see --list)"
   exit 1

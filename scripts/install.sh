@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install the desktop environment on a working CachyOS system, then apply the base theme.
+# Install the desktop environment on a working CachyOS system, then apply the death_star theme.
 # Safe to run again: installed packages are skipped and existing settings are kept.
 set -euo pipefail
 
