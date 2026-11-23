@@ -17,9 +17,10 @@ return {
     event = "VeryLazy",
     opts = function()
       local p = require("config.palette")
-      local function mode(color)
+      -- Cream lettering on scarlet and claret, dark on the lighter tweeds
+      local function mode(color, ink)
         return {
-          a = { fg = p.crust, bg = color, gui = "bold" },
+          a = { fg = ink or p.crust, bg = color, gui = "bold" },
           b = { fg = color, bg = p.surface0 },
           c = { fg = p.subtext0, bg = p.crust },
         }
@@ -27,15 +28,15 @@ return {
       return {
         options = {
           theme = {
-            normal = mode(p.gold),
-            insert = mode(p.sage),
-            visual = mode(p.slate),
-            replace = mode(p.claret),
-            command = mode(p.paleGold),
+            normal = mode(p.scarlet, p.oatmeal),
+            insert = mode(p.moss),
+            visual = mode(p.lovat),
+            replace = mode(p.claret, p.oatmeal),
+            command = mode(p.mustard),
             inactive = mode(p.overlay0),
           },
           globalstatus = true,
-          -- Rounded ends, like leather tabs on a bound menu
+          -- Rounded ends, like the leather tabs of an estate ledger
           section_separators = { left = "", right = "" },
           component_separators = "",
           disabled_filetypes = { statusline = { "snacks_dashboard" } },

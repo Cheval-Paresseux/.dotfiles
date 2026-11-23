@@ -3,65 +3,65 @@ pragma Singleton
 import Quickshell
 import QtQuick
 
-// Eddie palette: quiet luxury in old-money shades. Bottle-green darks, ivory text, antique gold
-// for focus, and muted sage, slate, cognac and claret for the rest (see themes/characters/eddie/README.md)
+// Eddie palette: the duke's estate in tweed and oak. Loden and oak darks, oatmeal text, the scarlet of
+// the hunting coat for focus, and the overchecks of a tweed for the rest (see themes/characters/eddie/README.md)
 Singleton {
     readonly property string name: "eddie"
 
-    // Neutral scale: from the dark green of the club's velvet to the ivory of a menu card
-    readonly property color crust: "#0a0d0b"
-    readonly property color mantle: "#121815"
-    readonly property color surface0: "#18201b"
-    readonly property color surface1: "#1f2a23"
-    readonly property color surface2: "#2a372e"
-    readonly property color overlay0: "#45524a"
-    readonly property color overlay1: "#66716a"
-    readonly property color subtext0: "#9a9f94"
-    readonly property color subtext1: "#c2bfae"
-    readonly property color ivory: "#e4dcc8"
+    // Neutral scale: from the oak of the gun room to the oatmeal of a tweed
+    readonly property color crust: "#100f0b"
+    readonly property color mantle: "#1b1913"
+    readonly property color surface0: "#23201a"
+    readonly property color surface1: "#2d2921"
+    readonly property color surface2: "#3a352a"
+    readonly property color overlay0: "#554e3f"
+    readonly property color overlay1: "#776e5a"
+    readonly property color subtext0: "#a39a80"
+    readonly property color subtext1: "#c7bea2"
+    readonly property color oatmeal: "#e8dfc5"
 
     // Accents
-    readonly property color gold: "#c8a96a"
-    readonly property color paleGold: "#e3cf9c"
-    readonly property color oldGold: "#7d6535"
-    readonly property color sage: "#88a878"
-    readonly property color slate: "#8b9cab"
-    readonly property color cognac: "#c98a4b"
-    readonly property color claret: "#b24a4f"
+    readonly property color scarlet: "#c8432c"
+    readonly property color claret: "#a63a55"
+    readonly property color moss: "#8ea35a"
+    readonly property color mustard: "#d0a443"
+    readonly property color lovat: "#7f9cb0"
+    readonly property color saddle: "#b5865a"
+    // Saddlery: the stitching of a leather strap and its brass rivets
+    readonly property color leather: "#8c6a45"
+    readonly property color brass: "#c2a05a"
 
     // Roles
-    readonly property color accent: gold
-    readonly property color info: slate
-    readonly property color success: sage
-    readonly property color warning: cognac
+    readonly property color accent: scarlet
+    readonly property color info: lovat
+    readonly property color success: moss
+    readonly property color warning: mustard
     readonly property color critical: claret
 
-    // Smoked glass: translucent over Hyprland's blur (see hypr/hyprland/rules.lua)
-    readonly property color background: Qt.alpha(crust, 0.82)
-    readonly property color popupBackground: Qt.alpha(mantle, 0.92)
+    // Matte and opaque, like waxed cotton
+    readonly property color background: crust
+    readonly property color popupBackground: mantle
     readonly property color surface: surface0
     readonly property color surfaceHover: surface1
     readonly property color surfaceActive: surface2
     readonly property color overlay: "#99000000"
-    readonly property color lockOverlay: "#b3060403"
-    // The pool of light a lamp leaves on the table
-    readonly property color lampGlow: Qt.alpha(gold, 0.07)
+    readonly property color lockOverlay: "#c0100f0b"
 
     readonly property color border: surface2
     readonly property color borderFocus: accent
     readonly property color borderCritical: critical
 
-    readonly property color text: ivory
+    readonly property color text: oatmeal
     readonly property color textMuted: subtext1
     readonly property color textSubtle: subtext0
     readonly property color textDisabled: overlay1
     readonly property color textCritical: critical
-    readonly property color textOnAccent: crust
+    readonly property color textOnAccent: "#f3ead2"
 
     readonly property color selection: Qt.alpha(accent, 0.3)
-    readonly property color selectionText: ivory
+    readonly property color selectionText: oatmeal
 
-    readonly property int radius: 8
+    readonly property int radius: 4
     readonly property int padding: 16
 
     readonly property int fontSmall: 10
@@ -72,10 +72,8 @@ Singleton {
 
     readonly property string iconFont: "MesloLGM Nerd Font Propo"
     readonly property int iconSize: 15
-    // Set like a drinks menu: titles, the clock and the lock screen. Playfair is a variable font
-    // whose optical size defaults to its sturdy text cut: displayAxes asks for its Display cut
-    readonly property string displayFont: "Playfair"
-    readonly property var displayAxes: ({ "opsz": 48 })
+    // Set like an estate's letterhead: titles, the clock, workspace numerals and the lock screen
+    readonly property string displayFont: "Noto Serif Display"
 
     readonly property int barHeight: 32
 

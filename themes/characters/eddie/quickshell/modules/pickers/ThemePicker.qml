@@ -34,7 +34,7 @@ PickerWindow {
     }
 
     name: "theme"
-    placeholder: "Another room..."
+    placeholder: "Visit another house..."
     panelWidth: 920
     panelHeight: 110 + grid.cellHeight * Math.max(1, cells.length / columns)
 
@@ -106,7 +106,7 @@ PickerWindow {
         labelOf: theme => theme?.name.toUpperCase() ?? ""
         labelBold: true
         isCurrent: theme => theme?.name === Theme.name
-        emptyText: "No such room"
+        emptyText: "No house by that name"
         onActivated: theme => root.apply(theme)
     }
 

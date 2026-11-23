@@ -77,7 +77,7 @@ role names, not raw hex, wherever the app allows it.
    `defaultWallpaper` in `quickshell/config/Theme.qml` (the default must be a file that exists).
    Draw the theme's own `quickshell/assets/emblem.svg` (200×200, lit from the top left, in the theme's
    palette) in its group's style so it can be told apart in the theme picker: a planet of radius 70 at
-   the centre for Star Wars, an object from the theme's scene for Characters (eddie: a snifter).
+   the centre for Star Wars, an object from the theme's scene for Characters (eddie: a flat cap).
 
 2. **Adapt every component with what is already installed.** Go beyond recolouring:
    - *Palette*: derive it from the wallpapers; keep the role mapping above. Update every app:

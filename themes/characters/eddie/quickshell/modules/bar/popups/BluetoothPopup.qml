@@ -31,14 +31,14 @@ PopupPanel {
     }
 
     PopupHeader {
-        title: "The guest list"
+        title: "The kennel"
         showSwitch: root.adapter !== null
         checked: root.powered
         onToggled: root.adapter.enabled = !root.adapter.enabled
     }
 
     PopupSection {
-        title: "Regulars"
+        title: "At heel"
         visible: root.powered
     }
 
@@ -72,13 +72,13 @@ PopupPanel {
 
         EmptyState {
             visible: root.paired.length === 0
-            icon: Icons.guests
-            text: "No regulars yet"
+            icon: Icons.hound
+            text: "No hounds yet"
         }
     }
 
     PopupSection {
-        title: "At the door"
+        title: "Strays"
         visible: root.powered
 
         PopupButton {

@@ -2,6 +2,7 @@ import Quickshell
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Shapes
+import qs.components
 import qs.config
 import qs.services
 
@@ -10,7 +11,7 @@ WlSessionLockSurface {
 
     required property var lock
 
-    color: "black"
+    color: Theme.crust
 
     SystemClock {
         id: clock
@@ -30,41 +31,6 @@ WlSessionLockSurface {
         color: Theme.lockOverlay
     }
 
-    // A lamp hangs above the door: its pool of light breathes like a flame
-    Shape {
-        anchors.fill: parent
-        preferredRendererType: Shape.CurveRenderer
-
-        ShapePath {
-            strokeWidth: 0
-            fillGradient: RadialGradient {
-                centerX: root.width / 2
-                centerY: root.height * 0.38
-                centerRadius: root.height * 0.55
-                focalX: centerX
-                focalY: centerY
-
-                GradientStop { position: 0; color: Qt.alpha(Theme.gold, 0.12) }
-                GradientStop { position: 0.5; color: Qt.alpha(Theme.gold, 0.035) }
-                GradientStop { position: 1; color: "transparent" }
-            }
-
-            PathRectangle {
-                width: root.width
-                height: root.height
-            }
-        }
-
-        SequentialAnimation on opacity {
-            loops: Animation.Infinite
-
-            NumberAnimation { to: 0.82; duration: 1700; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 1; duration: 900; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 0.9; duration: 2300; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 1; duration: 1300; easing.type: Easing.InOutSine }
-        }
-    }
-
     MouseArea {
         anchors.fill: parent
         onClicked: passwordField.forceActiveFocus()
@@ -74,21 +40,73 @@ WlSessionLockSurface {
         anchors.centerIn: parent
         spacing: 8
 
-        Text {
+        // The family arms: a chevron between three fleurs-de-lis, on a scarlet heater shield edged in brass
+        Item {
+            id: arms
+
             anchors.horizontalCenter: parent.horizontalCenter
-            text: Icons.glass
-            color: Theme.gold
-            font.family: Theme.iconFont
-            font.pixelSize: 34
+            width: 84
+            height: 100
+
+            Shape {
+                anchors.fill: parent
+                preferredRendererType: Shape.CurveRenderer
+
+                ShapePath {
+                    strokeWidth: 3
+                    strokeColor: Theme.brass
+                    fillColor: Theme.accent
+
+                    startX: 2
+                    startY: 2
+                    PathLine { x: arms.width - 2; y: 2 }
+                    PathLine { x: arms.width - 2; y: arms.height * 0.45 }
+                    PathQuad { x: arms.width / 2; y: arms.height - 2; controlX: arms.width - 2; controlY: arms.height * 0.85 }
+                    PathQuad { x: 2; y: arms.height * 0.45; controlX: 2; controlY: arms.height * 0.85 }
+                    PathLine { x: 2; y: 2 }
+                }
+
+                ShapePath {
+                    strokeWidth: 0
+                    strokeColor: "transparent"
+                    fillColor: Theme.oatmeal
+
+                    startX: 4
+                    startY: 66
+                    PathLine { x: arms.width / 2; y: 32 }
+                    PathLine { x: arms.width - 4; y: 66 }
+                    PathLine { x: arms.width - 4; y: 80 }
+                    PathLine { x: arms.width / 2; y: 46 }
+                    PathLine { x: 4; y: 80 }
+                    PathLine { x: 4; y: 66 }
+                }
+            }
+
+            Repeater {
+                model: [{ x: 21, y: 18 }, { x: 63, y: 18 }, { x: 42, y: 70 }]
+
+                Text {
+                    required property var modelData
+
+                    x: modelData.x - width / 2
+                    y: modelData.y - height / 2
+                    text: "⚜"
+                    color: Theme.oatmeal
+                    font.family: Theme.iconFont
+                    font.pixelSize: 17
+                }
+            }
         }
 
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "MEMBERS ONLY"
-            color: Theme.oldGold
-            font.pixelSize: Theme.fontSmall
-            font.bold: true
-            font.letterSpacing: 5
+            topPadding: 6
+            text: "PRIVATE ESTATE"
+            color: Theme.brass
+            font.family: Theme.displayFont
+            font.pixelSize: Theme.fontMedium
+            font.weight: Font.DemiBold
+            font.letterSpacing: 6
         }
 
         Text {
@@ -96,43 +114,32 @@ WlSessionLockSurface {
             text: Qt.formatDateTime(clock.date, "HH:mm")
             color: Theme.text
             font.family: Theme.displayFont
-            font.variableAxes: Theme.displayAxes
-            font.pixelSize: 108
-            font.weight: Font.Light
-            // Distance-field text breaks up the overlapping outlines of a variable font at this size
-            renderType: Text.CurveRendering
+            font.pixelSize: 104
+            font.weight: Font.Medium
         }
 
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
+            bottomPadding: 26
             text: Qt.formatDateTime(clock.date, "dddd d MMMM yyyy")
             color: Theme.textMuted
             font.family: Theme.displayFont
-            font.variableAxes: Theme.displayAxes
             font.pixelSize: 20
             font.italic: true
-        }
-
-        Text {
-            anchors.horizontalCenter: parent.horizontalCenter
-            topPadding: 10
-            bottomPadding: 22
-            text: "───────  ❦  ───────"
-            color: Theme.oldGold
-            font.family: Theme.iconFont
-            font.pixelSize: Theme.fontLarge
         }
 
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             width: 300
-            height: 42
-            radius: height / 2
+            height: 44
+            radius: Theme.radius
             color: Theme.popupBackground
             border.width: 1
             border.color: root.lock.failed
                 ? Theme.borderCritical
                 : (passwordField.activeFocus ? Theme.borderFocus : Theme.border)
+
+            Stitching {}
 
             TextInput {
                 id: passwordField
@@ -189,12 +196,11 @@ WlSessionLockSurface {
             topPadding: 4
             text: {
                 if (root.lock.authenticating)
-                    return "Checking the list..."
-                return root.lock.failed ? "Wrong password" : "The door is closed. Password, please."
+                    return "Checking with the butler..."
+                return root.lock.failed ? "Wrong password" : "The gates are shut. State your business."
             }
             color: root.lock.failed ? Theme.textCritical : Theme.textSubtle
             font.family: Theme.displayFont
-            font.variableAxes: Theme.displayAxes
             font.pixelSize: Theme.fontLarge
             font.italic: true
         }

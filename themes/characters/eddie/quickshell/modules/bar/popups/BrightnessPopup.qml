@@ -5,7 +5,7 @@ import qs.services
 
 PopupPanel {
     PopupHeader {
-        title: "Lamplight"
+        title: "The weather"
     }
 
     Item {

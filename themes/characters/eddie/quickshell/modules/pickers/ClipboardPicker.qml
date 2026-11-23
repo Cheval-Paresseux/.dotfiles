@@ -12,7 +12,7 @@ PickerWindow {
         : entries
 
     name: "clipboard"
-    placeholder: "Search the notebook..."
+    placeholder: "Search the estate books..."
 
     onQueryChanged: list.currentIndex = 0
     onOpened: listProcess.running = true
@@ -122,7 +122,7 @@ PickerWindow {
         Text {
             anchors.centerIn: parent
             visible: list.count === 0
-            text: root.entries.length === 0 ? "The notebook is blank" : "Nothing like that in the notebook"
+            text: root.entries.length === 0 ? "The books are blank" : "Nothing of the sort in the books"
             color: Theme.textDisabled
             font.pixelSize: Theme.fontLarge
         }

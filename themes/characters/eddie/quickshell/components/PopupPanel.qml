@@ -28,20 +28,7 @@ PopupWindow {
         radius: Theme.radius
         focus: true
 
-        // Lamplight catching the top edge
-        Rectangle {
-            anchors.horizontalCenter: parent.horizontalCenter
-            y: 1
-            width: parent.width - Theme.radius * 2
-            height: 1
-            gradient: Gradient {
-                orientation: Gradient.Horizontal
-
-                GradientStop { position: 0; color: "transparent" }
-                GradientStop { position: 0.5; color: Qt.alpha(Theme.gold, 0.3) }
-                GradientStop { position: 1; color: "transparent" }
-            }
-        }
+        Stitching {}
 
         Keys.onPressed: event => {
             if (event.key === Qt.Key_Escape) {

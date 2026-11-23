@@ -3,16 +3,16 @@ pragma Singleton
 import Quickshell
 import QtQuick
 
-// Nerd Font Material Design glyphs (ttf-meslo-nerd), drawn with Theme.iconFont: the lounge's objects
+// Nerd Font Material Design glyphs (ttf-meslo-nerd), drawn with Theme.iconFont: life on the estate
 Singleton {
-    readonly property string wallpaper: glyph(0xF156E) // armchair
-    readonly property string apps: glyph(0xF191E) // the bottles behind the bar
-    readonly property string cigar: glyph(0xF1189)
-    readonly property string cigarOff: glyph(0xF141B)
-    readonly property string glass: glyph(0xF02A8)
+    readonly property string wallpaper: glyph(0xF0E49) // a frame from the gallery
+    readonly property string apps: glyph(0xF088D) // ring for the butler
+    readonly property string kettle: glyph(0xF1319) // on the boil
+    readonly property string kettleOff: glyph(0xF0F56)
     readonly property string record: glyph(0xF0025)
-    readonly property string tray: glyph(0xF1294)
-    readonly property string guests: glyph(0xF156F) // an empty armchair
+    readonly property string letterbox: glyph(0xF0D8C)
+    readonly property string hound: glyph(0xF0A44)
+    readonly property string barley: glyph(0xF0073)
 
     readonly property string power: glyph(0xF0425)
     readonly property string exit: glyph(0xF081C) // the door out
@@ -21,15 +21,15 @@ Singleton {
     readonly property string logout: glyph(0xF0343)
     readonly property string restart: glyph(0xF0709)
 
-    // Power profiles poured as a sip, a dram and a double
-    readonly property string powerSaver: glyph(0xF02A8)
-    readonly property string balanced: glyph(0xF0876)
-    readonly property string performance: glyph(0xF0854)
+    // Power profiles at the horse's pace: walk, trot, gallop
+    readonly property string powerSaver: glyph(0xF15BF)
+    readonly property string balanced: glyph(0xF15C1)
+    readonly property string performance: glyph(0xF186E)
 
-    // The bell on the front desk
-    readonly property string bell: glyph(0xF088D)
-    readonly property string bellOutline: glyph(0xF0D97)
-    readonly property string bellOff: glyph(0xF081B) // door closed: do not disturb
+    // The post: a sealed letter, the seal broken once read, the gates shut for Do Not Disturb
+    readonly property string bell: glyph(0xF195B)
+    readonly property string bellOutline: glyph(0xF195C)
+    readonly property string bellOff: glyph(0xF0299)
 
     readonly property string bluetooth: glyph(0xF00AF)
     readonly property string bluetoothConnected: glyph(0xF00B1)
@@ -48,10 +48,10 @@ Singleton {
     readonly property string volumeMedium: glyph(0xF0580)
     readonly property string volumeHigh: glyph(0xF057E)
 
-    // Candlelight, lamplight, the chandelier
-    readonly property string brightnessLow: glyph(0xF05E2)
-    readonly property string brightnessMedium: glyph(0xF06B5)
-    readonly property string brightnessHigh: glyph(0xF17D3)
+    // British weather: overcast, bright spells, the rare sunny day
+    readonly property string brightnessLow: glyph(0xF0590)
+    readonly property string brightnessMedium: glyph(0xF0595)
+    readonly property string brightnessHigh: glyph(0xF0599)
 
     readonly property string lockOutline: glyph(0xF0341)
     readonly property string magnify: glyph(0xF0349)

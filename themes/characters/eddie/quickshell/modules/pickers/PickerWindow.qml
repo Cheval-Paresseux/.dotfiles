@@ -3,6 +3,7 @@ import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
+import qs.components
 import qs.config
 import qs.services
 
@@ -101,6 +102,8 @@ PanelWindow {
         MouseArea {
             anchors.fill: parent
         }
+
+        Stitching {}
 
         ColumnLayout {
             anchors.fill: parent

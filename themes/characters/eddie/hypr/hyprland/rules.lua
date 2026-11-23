@@ -22,12 +22,3 @@ hl.window_rule({
 	},
 	no_focus = true,
 })
-
--- Smoked glass under the bar, its popups, the notifications and the pickers
-hl.layer_rule({
-	name = "blur-quickshell",
-	match = { namespace = "^quickshell(-(launcher|clipboard|wallpaper|theme))?$" },
-	blur = true,
-	blur_popups = true,
-	ignore_alpha = 0.1,
-})

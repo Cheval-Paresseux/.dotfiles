@@ -22,7 +22,6 @@ Item {
         text: root.title
         color: Theme.text
         font.family: Theme.displayFont
-        font.variableAxes: Theme.displayAxes
         font.pixelSize: 17
         font.weight: Font.Medium
     }
@@ -34,7 +33,6 @@ Item {
         text: root.detail
         color: root.detailColor
         font.family: Theme.displayFont
-        font.variableAxes: Theme.displayAxes
         font.pixelSize: Theme.fontMedium
         font.italic: true
     }

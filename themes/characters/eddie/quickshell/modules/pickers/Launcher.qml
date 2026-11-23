@@ -14,7 +14,7 @@ PickerWindow {
         : apps
 
     name: "launcher"
-    placeholder: "What will it be tonight?"
+    placeholder: "Ring for anything..."
     panelHeight: Math.min(520, 80 + list.contentHeight)
 
     onQueryChanged: list.currentIndex = 0
@@ -109,8 +109,8 @@ PickerWindow {
         EmptyState {
             anchors.centerIn: parent
             visible: list.count === 0
-            icon: Icons.glass
-            text: "Not on the menu"
+            icon: Icons.barley
+            text: "Nothing of the sort on the estate"
         }
     }
 }

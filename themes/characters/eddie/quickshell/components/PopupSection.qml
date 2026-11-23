@@ -10,18 +10,13 @@ Item {
     width: parent ? parent.width : 0
     implicitHeight: 28
 
-    // A gilt rule that fades out, like the lines of a menu card
+    // A rule of leather, like the lines of an estate ledger
     Rectangle {
         anchors.top: parent.top
         anchors.topMargin: 4
         width: parent.width
         height: 1
-        gradient: Gradient {
-            orientation: Gradient.Horizontal
-
-            GradientStop { position: 0; color: Qt.alpha(Theme.oldGold, 0.7) }
-            GradientStop { position: 1; color: "transparent" }
-        }
+        color: Theme.surfaceActive
     }
 
     Text {

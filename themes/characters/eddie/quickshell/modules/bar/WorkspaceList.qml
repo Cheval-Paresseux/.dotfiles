@@ -1,17 +1,19 @@
 import Quickshell
 import Quickshell.Hyprland
 import QtQuick
+import QtQuick.Shapes
 import qs.config
 
-// Workspaces are tumblers on the counter: each fills with the windows it holds,
-// the one you are in is poured to the brim and catches the light
+// Workspaces are small heraldic shields numbered in Roman figures, like the quarterings of the family
+// arms; the one you are in is emblazoned in scarlet
 Row {
     id: root
 
     required property ShellScreen screen
     readonly property HyprlandMonitor monitor: Hyprland.monitorFor(screen)
+    readonly property var numerals: ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
-    spacing: 5
+    spacing: 4
 
     Repeater {
         model: Hyprland.workspaces
@@ -21,57 +23,39 @@ Row {
 
             required property HyprlandWorkspace modelData
             readonly property bool active: modelData.active
-            readonly property int windows: modelData.toplevels.values.length
 
             visible: modelData.id > 0 && modelData.monitor === root.monitor
-            width: 16
-            height: 20
+            width: 22
+            height: 24
 
-            // The glass: open at the top, heavy at the base
-            Rectangle {
-                id: glass
-
+            // A heater shield: square shoulders, sides curving down to a point
+            Shape {
                 anchors.fill: parent
-                anchors.bottomMargin: 2
-                color: "transparent"
-                topLeftRadius: 1
-                topRightRadius: 1
-                bottomLeftRadius: 4
-                bottomRightRadius: 4
-                border.width: 1
-                border.color: workspace.active
-                    ? Theme.paleGold
-                    : Qt.alpha(Theme.subtext0, mouseArea.containsMouse ? 0.8 : 0.4)
-            }
+                preferredRendererType: Shape.CurveRenderer
 
-            Rectangle {
-                anchors.left: glass.left
-                anchors.right: glass.right
-                anchors.bottom: glass.bottom
-                anchors.margins: 2
-                height: workspace.active
-                    ? glass.height - 6
-                    : Math.min(glass.height - 6, 3 * workspace.windows)
-                bottomLeftRadius: 2
-                bottomRightRadius: 2
-                gradient: Gradient {
-                    GradientStop { position: 0; color: workspace.active ? Theme.paleGold : Qt.alpha(Theme.gold, 0.45) }
-                    GradientStop { position: 1; color: workspace.active ? Theme.oldGold : Qt.alpha(Theme.oldGold, 0.45) }
-                }
+                ShapePath {
+                    strokeWidth: 1
+                    strokeColor: workspace.active ? Theme.accent : (mouseArea.containsMouse ? Theme.textMuted : Theme.overlay0)
+                    fillColor: workspace.active ? Theme.accent : (mouseArea.containsMouse ? Theme.surfaceHover : "transparent")
 
-                Behavior on height {
-                    NumberAnimation { duration: 400; easing.type: Easing.OutCubic }
+                    startX: 1.5
+                    startY: 1.5
+                    PathLine { x: workspace.width - 1.5; y: 1.5 }
+                    PathLine { x: workspace.width - 1.5; y: workspace.height * 0.45 }
+                    PathQuad { x: workspace.width / 2; y: workspace.height - 1; controlX: workspace.width - 1.5; controlY: workspace.height * 0.85 }
+                    PathQuad { x: 1.5; y: workspace.height * 0.45; controlX: 1.5; controlY: workspace.height * 0.85 }
+                    PathLine { x: 1.5; y: 1.5 }
                 }
             }
 
-            // The heavy base of the tumbler
-            Rectangle {
-                anchors.bottom: parent.bottom
+            Text {
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: parent.width - 4
-                height: 2
-                radius: 1
-                color: glass.border.color
+                y: 2
+                text: root.numerals[workspace.modelData.id - 1] ?? workspace.modelData.name
+                color: workspace.active ? Theme.textOnAccent : Theme.textMuted
+                font.family: Theme.displayFont
+                font.pixelSize: workspace.modelData.id > 3 ? 9 : 11
+                font.weight: Font.Bold
             }
 
             MouseArea {

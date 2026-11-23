@@ -117,14 +117,14 @@ PopupPanel {
     }
 
     PopupHeader {
-        title: "The wire"
+        title: "The telegraph"
         showSwitch: true
         checked: WifiService.enabled
         onToggled: WifiService.toggle()
     }
 
     PopupSection {
-        title: "On the line"
+        title: "On the wire"
         visible: root.current !== null
 
         PopupButton {
@@ -163,7 +163,7 @@ PopupPanel {
     }
 
     PopupSection {
-        title: "Lines"
+        title: "Lines in the county"
         visible: WifiService.enabled && root.device !== null
     }
 

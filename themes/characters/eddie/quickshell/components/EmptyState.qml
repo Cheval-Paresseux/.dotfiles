@@ -1,7 +1,7 @@
 import QtQuick
 import qs.config
 
-// A faint object from the lounge above a short line in italics, shown when a list is empty
+// A faint object from the estate above a short line in italics, shown when a list is empty
 Column {
     id: root
 
@@ -27,7 +27,6 @@ Column {
         text: root.text
         color: Theme.textDisabled
         font.family: Theme.displayFont
-        font.variableAxes: Theme.displayAxes
         font.pixelSize: Theme.fontMedium
         font.italic: true
     }

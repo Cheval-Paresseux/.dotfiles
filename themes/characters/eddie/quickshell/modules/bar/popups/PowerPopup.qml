@@ -10,9 +10,9 @@ PopupPanel {
 
     readonly property var actions: [
         { label: "Lock", icon: Icons.lock, color: Theme.accent, command: ["qs", "ipc", "call", "lock", "lock"] },
-        { label: "Suspend", icon: Icons.sleep, color: Theme.slate, command: ["systemctl", "suspend"] },
-        { label: "Log out", icon: Icons.logout, color: Theme.paleGold, command: ["uwsm", "stop"], confirm: true },
-        { label: "Reboot", icon: Icons.restart, color: Theme.cognac, command: ["systemctl", "reboot"], confirm: true },
+        { label: "Suspend", icon: Icons.sleep, color: Theme.info, command: ["systemctl", "suspend"] },
+        { label: "Log out", icon: Icons.logout, color: Theme.warning, command: ["uwsm", "stop"], confirm: true },
+        { label: "Reboot", icon: Icons.restart, color: Theme.saddle, command: ["systemctl", "reboot"], confirm: true },
         { label: "Shut down", icon: Icons.power, color: Theme.critical, command: ["systemctl", "poweroff"], confirm: true }
     ]
 
@@ -82,12 +82,12 @@ PopupPanel {
     }
 
     PopupHeader {
-        title: "Last call"
+        title: "Calling it a day"
         detail: root.uptime
     }
 
     PopupSection {
-        title: "Leaving"
+        title: "Taking leave"
     }
 
     Column {

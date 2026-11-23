@@ -9,13 +9,13 @@ PopupPanel {
 
     readonly property UPowerDevice device: BatteryService.device
     readonly property var profiles: [
-        { label: "Sip", icon: Icons.powerSaver, value: PowerProfile.PowerSaver, color: Theme.success },
-        { label: "Dram", icon: Icons.balanced, value: PowerProfile.Balanced, color: Theme.info },
-        { label: "Double", icon: Icons.performance, value: PowerProfile.Performance, color: Theme.warning }
+        { label: "Walk", icon: Icons.powerSaver, value: PowerProfile.PowerSaver, color: Theme.success },
+        { label: "Trot", icon: Icons.balanced, value: PowerProfile.Balanced, color: Theme.info },
+        { label: "Gallop", icon: Icons.performance, value: PowerProfile.Performance, color: Theme.warning }
     ].filter(profile => profile.value !== PowerProfile.Performance || PowerProfiles.hasPerformanceProfile)
 
     PopupHeader {
-        title: "The decanter"
+        title: "The stables"
         detail: BatteryService.status
     }
 
@@ -84,7 +84,7 @@ PopupPanel {
     }
 
     PopupSection {
-        title: "The pour"
+        title: "The pace"
     }
 
     Row {

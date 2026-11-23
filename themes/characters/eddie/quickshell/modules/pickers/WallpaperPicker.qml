@@ -18,7 +18,7 @@ PickerWindow {
         : wallpapers
 
     name: "wallpaper"
-    placeholder: "Choose the scene..."
+    placeholder: "Search the gallery..."
     panelWidth: 760
 
     onQueryChanged: grid.currentIndex = 0
@@ -64,7 +64,7 @@ PickerWindow {
         isCurrent: path => path === Settings.wallpaperPath
         emptyText: root.wallpapers.length === 0
             ? "No wallpapers found.\nAdd images to ~/Pictures/Wallpapers"
-            : "No such scene"
+            : "No such painting"
         onActivated: path => root.apply(path)
     }
 

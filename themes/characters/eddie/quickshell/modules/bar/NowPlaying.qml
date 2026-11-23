@@ -2,7 +2,7 @@ import Quickshell.Services.Mpris
 import QtQuick
 import qs.config
 
-// The record on the turntable: title and artist of what is playing, in italics.
+// The gramophone in the drawing room: title and artist of what is playing, in italics.
 // Click to pause or play, scroll to change track; hidden when nothing is loaded.
 Item {
     id: root
@@ -43,7 +43,6 @@ Item {
             textFormat: Text.PlainText
             color: mouseArea.containsMouse ? Theme.text : (root.playing ? Theme.textMuted : Theme.textDisabled)
             font.family: Theme.displayFont
-            font.variableAxes: Theme.displayAxes
             font.pixelSize: Theme.fontLarge
             font.italic: true
             elide: Text.ElideRight

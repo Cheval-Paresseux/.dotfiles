@@ -17,23 +17,24 @@ return {
     words = { enabled = true },
     dashboard = {
       preset = {
+        -- snacks centres each line on its own, so the arms carry no leading spaces
         header = [[
-               )   (
-              (   ) )
-               ) ( (
-            ╭─────────╮
-            │         │
-            │░░░░░░░░░│
-            │▒▒▒▒▒▒▒▒▒│
-            ╰━━━━━━━━━╯
+⚜   ⚜   ⚜
+╰─◆─◆─◆─◆─╯
+┏━━━━━━━━━━━┓
+┃ ⚜       ⚜ ┃
+┃    ╱ ╲    ┃
+┃  ╱     ╲  ┃
+┃╱         ╲┃
+╲    ⚜    ╱
+╲       ╱
+╲     ╱
+╲   ╱
+╲ ╱
 
-────────────  ❧  ────────────
+E  D  D  I  E
 
-        E  D  D  I  E
-
-   neat  ·  aged  ·  after hours
-
-────────────  ☙  ────────────
+old land  ·  older name
 ]],
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },

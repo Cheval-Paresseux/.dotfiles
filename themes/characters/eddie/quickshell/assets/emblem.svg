@@ -1,41 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
   <defs>
-    <linearGradient id="whisky" x1="0" y1="122" x2="0" y2="150" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#d9a96a"/>
-      <stop offset="0.35" stop-color="#b9803f"/>
-      <stop offset="0.8" stop-color="#7a4f24"/>
-      <stop offset="1" stop-color="#3e2612"/>
+    <radialGradient id="tweed" cx="60" cy="74" r="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8f7f5c"/>
+      <stop offset="0.5" stop-color="#6b5d41"/>
+      <stop offset="1" stop-color="#3a3122"/>
+    </radialGradient>
+    <linearGradient id="peak" x1="0" y1="124" x2="0" y2="142" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5a4e36"/>
+      <stop offset="1" stop-color="#2a2417"/>
     </linearGradient>
-    <radialGradient id="glass" cx="74" cy="70" r="90" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#e4dcc8" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#e4dcc8" stop-opacity="0.04"/>
-    </radialGradient>
-    <radialGradient id="pool" cx="100" cy="182" r="60" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#c8a96a" stop-opacity="0.45"/>
-      <stop offset="1" stop-color="#c8a96a" stop-opacity="0"/>
-    </radialGradient>
   </defs>
 
-  <!-- The pool of lamplight on the table -->
-  <ellipse cx="100" cy="182" rx="70" ry="12" fill="url(#pool)"/>
+  <!-- The flat cap of a gentleman farmer: heather tweed with a scarlet overcheck, lit from the top left -->
+  <ellipse cx="102" cy="148" rx="80" ry="6" fill="#000000" fill-opacity="0.25"/>
 
-  <!-- A wisp of cigar smoke drifting over the rim -->
-  <path d="M110 40 C102 30 118 24 108 12 S114 8 110 4" fill="none" stroke="#8b9cab" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M90 42 C84 34 94 28 88 20" fill="none" stroke="#8b9cab" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- The short peak, just showing under the front of the crown -->
+  <path d="M138 128 C160 124 180 126 190 134 C178 141 156 142 134 138 Z" fill="url(#peak)" stroke="#1c170e" stroke-width="1.5"/>
 
-  <!-- Foot and stem -->
-  <ellipse cx="100" cy="181" rx="32" ry="7" fill="#e4dcc8" fill-opacity="0.12" stroke="#e4dcc8" stroke-opacity="0.55" stroke-width="1.5"/>
-  <path d="M97 149 L96 179 L104 179 L103 149 Z" fill="#e4dcc8" fill-opacity="0.18" stroke="#e4dcc8" stroke-opacity="0.5" stroke-width="1"/>
+  <!-- The crown and its check -->
+  <path d="M22.0 132.0 L21.4 129.9 L21.0 127.8 L20.6 125.8 L20.3 123.7 L20.1 121.7 L20.0 119.7 L20.0 117.8 L20.0 115.8 L20.2 113.9 L20.4 112.0 L20.7 110.1 L21.1 108.3 L21.5 106.5 L22.1 104.8 L22.7 103.0 L23.4 101.3 L24.2 99.7 L25.1 98.1 L26.0 96.5 L27.0 95.0 L28.1 93.5 L29.2 92.1 L30.5 90.7 L31.8 89.4 L33.2 88.1 L34.6 86.9 L36.1 85.7 L37.7 84.6 L39.4 83.5 L41.1 82.5 L42.9 81.6 L44.8 80.7 L46.7 79.9 L48.7 79.1 L50.8 78.4 L52.9 77.8 L55.1 77.2 L57.3 76.7 L59.6 76.3 L62.0 76.0 L64.9 75.7 L67.7 75.5 L70.6 75.3 L73.4 75.2 L76.3 75.1 L79.2 75.1 L82.0 75.2 L84.9 75.2 L87.7 75.4 L90.6 75.5 L93.4 75.8 L96.3 76.0 L99.1 76.3 L101.9 76.7 L104.6 77.1 L107.4 77.5 L110.2 78.0 L112.9 78.6 L115.6 79.1 L118.2 79.8 L120.9 80.4 L123.5 81.1 L126.1 81.8 L128.7 82.6 L131.2 83.4 L133.7 84.3 L136.1 85.2 L138.6 86.1 L140.9 87.1 L143.3 88.1 L145.6 89.1 L147.8 90.2 L150.0 91.3 L152.2 92.5 L154.3 93.6 L156.3 94.8 L158.3 96.1 L160.3 97.4 L162.2 98.7 L164.0 100.0 L164.7 100.6 L165.4 101.2 L166.1 101.8 L166.8 102.5 L167.4 103.1 L168.0 103.7 L168.5 104.4 L169.0 105.0 L169.5 105.7 L170.0 106.3 L170.4 107.0 L170.8 107.6 L171.2 108.3 L171.6 109.0 L171.9 109.6 L172.2 110.3 L172.4 111.0 L172.6 111.7 L172.8 112.3 L173.0 113.0 L173.1 113.7 L173.2 114.3 L173.3 115.0 L173.4 115.7 L173.4 116.4 L173.4 117.0 L173.3 117.7 L173.2 118.4 L173.1 119.0 L173.0 119.7 L172.8 120.3 L172.6 121.0 L172.4 121.6 L172.2 122.3 L171.9 122.9 L171.6 123.5 L171.2 124.2 L170.8 124.8 L170.4 125.4 L170.0 126.0 L140.0 134.0 L90.0 138.0 L50.0 138.0 L22.0 132.0 Z" fill="url(#tweed)" stroke="#1c170e" stroke-width="1.5"/>
+  <line x1="38.7" y1="86.0" x2="135.2" y2="86.0" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="28.1" y1="98.0" x2="158.2" y2="98.0" stroke="#d0a443" stroke-opacity="0.22" stroke-width="1"/>
+  <line x1="23.7" y1="110.0" x2="169.0" y2="110.0" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="23.1" y1="122.0" x2="169.3" y2="122.0" stroke="#d0a443" stroke-opacity="0.22" stroke-width="1"/>
+  <line x1="34.3" y1="134.0" x2="137.0" y2="134.0" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="32.0" y1="92.2" x2="32.0" y2="131.1" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="44.0" y1="84.0" x2="44.0" y2="133.7" stroke="#d0a443" stroke-opacity="0.22" stroke-width="1"/>
+  <line x1="56.0" y1="80.0" x2="56.0" y2="135.0" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="68.0" y1="78.5" x2="68.0" y2="135.0" stroke="#d0a443" stroke-opacity="0.22" stroke-width="1"/>
+  <line x1="80.0" y1="78.1" x2="80.0" y2="135.0" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="92.0" y1="78.6" x2="92.0" y2="134.8" stroke="#d0a443" stroke-opacity="0.22" stroke-width="1"/>
+  <line x1="104.0" y1="80.0" x2="104.0" y2="133.9" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="116.0" y1="82.2" x2="116.0" y2="132.9" stroke="#d0a443" stroke-opacity="0.22" stroke-width="1"/>
+  <line x1="128.0" y1="85.4" x2="128.0" y2="132.0" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="140.0" y1="89.7" x2="140.0" y2="131.0" stroke="#d0a443" stroke-opacity="0.22" stroke-width="1"/>
+  <line x1="152.0" y1="95.4" x2="152.0" y2="127.8" stroke="#c8432c" stroke-opacity="0.55" stroke-width="1.3"/>
+  <line x1="164.0" y1="103.0" x2="164.0" y2="124.6" stroke="#d0a443" stroke-opacity="0.22" stroke-width="1"/>
 
-  <!-- The bowl of a snifter, narrow at the mouth, a dram of whisky inside -->
-  <path d="M71.2 46 A56 56 0 1 0 128.8 46" fill="url(#glass)"/>
-  <path d="M51.5 122 A56 56 0 0 0 148.5 122 Z" fill="url(#whisky)"/>
-  <ellipse cx="100" cy="122" rx="48.5" ry="5" fill="#d9b07a" fill-opacity="0.5"/>
-  <path d="M71.2 46 A56 56 0 1 0 128.8 46" fill="none" stroke="#e4dcc8" stroke-opacity="0.6" stroke-width="2"/>
-  <ellipse cx="100" cy="46" rx="28.8" ry="4.5" fill="none" stroke="#e4dcc8" stroke-opacity="0.6" stroke-width="2"/>
-
-  <!-- The lamp caught on the glass, top left -->
-  <path d="M62 68 A48 48 0 0 0 52 98" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
-  <path d="M74 56 A48 48 0 0 0 69 60" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
-  <ellipse cx="126" cy="136" rx="5" ry="2.5" fill="#ffffff" fill-opacity="0.35"/>
+  <!-- The seam along the band, and light on the crown -->
+  <path d="M26 128 C60 134 120 134 166 122" fill="none" stroke="#e8dfc5" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3 2"/>
+  <path d="M34 98 C44 84 60 80 84 79" fill="none" stroke="#f3ead2" stroke-opacity="0.3" stroke-width="3" stroke-linecap="round"/>
 </svg>

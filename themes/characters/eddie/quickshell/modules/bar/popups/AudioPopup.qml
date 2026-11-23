@@ -15,7 +15,7 @@ PopupPanel {
     }
 
     PopupHeader {
-        title: "The gramophone"
+        title: "The wireless"
     }
 
     PopupSection {

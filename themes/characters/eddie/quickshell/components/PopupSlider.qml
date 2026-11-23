@@ -24,22 +24,18 @@ Slider {
             width: root.visualPosition * parent.width
             height: parent.height
             radius: 2
-            gradient: Gradient {
-                orientation: Gradient.Horizontal
-
-                GradientStop { position: 0; color: root.dimmed ? Theme.textDisabled : Theme.oldGold }
-                GradientStop { position: 1; color: root.dimmed ? Theme.textDisabled : Theme.accent }
-            }
+            color: root.dimmed ? Theme.textDisabled : Theme.accent
         }
     }
 
+    // A brass rivet
     handle: Rectangle {
         x: root.leftPadding + root.visualPosition * (root.availableWidth - width)
         y: root.topPadding + root.availableHeight / 2 - height / 2
         width: 14
         height: 14
         radius: 7
-        color: root.pressed ? Theme.paleGold : Theme.accent
+        color: root.pressed ? Qt.lighter(Theme.brass, 1.2) : Theme.brass
         border.width: 2
         border.color: Theme.mantle
     }

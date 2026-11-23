@@ -11,7 +11,7 @@ PopupPanel {
     implicitWidth: 320
 
     PopupHeader {
-        title: "The silver tray"
+        title: "The post"
         detail: root.history.length > 0 ? root.history.length.toString() : ""
     }
 
@@ -31,14 +31,14 @@ PopupPanel {
 
         PopupButton {
             width: (actions.width - actions.spacing) / 2
-            text: "Clear the tray"
+            text: "Clear the hall table"
             enabled: root.history.length > 0
             onClicked: NotificationService.clear()
         }
     }
 
     PopupSection {
-        title: "Messages"
+        title: "Letters"
     }
 
     ListView {
@@ -140,7 +140,7 @@ PopupPanel {
 
     EmptyState {
         visible: root.history.length === 0
-        icon: Icons.tray
-        text: NotificationService.doNotDisturb ? "Nothing on the tray · the door is closed" : "Nothing on the tray"
+        icon: Icons.letterbox
+        text: NotificationService.doNotDisturb ? "No post today · the gates are shut" : "No post today"
     }
 }

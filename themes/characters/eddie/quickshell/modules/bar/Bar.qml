@@ -1,5 +1,6 @@
 import Quickshell
 import QtQuick
+import qs.components
 import qs.config
 
 Scope {
@@ -21,36 +22,12 @@ Scope {
             exclusiveZone: Theme.barHeight
             color: "transparent"
 
-            // Smoked glass, warmed in the middle by the lamp above the clock
+            // A leather strap: stitched along its edges, its sections set apart by brass rivets
             Rectangle {
                 anchors.fill: parent
                 color: Theme.background
-            }
 
-            Rectangle {
-                anchors.fill: parent
-                gradient: Gradient {
-                    orientation: Gradient.Horizontal
-
-                    GradientStop { position: 0.25; color: "transparent" }
-                    GradientStop { position: 0.5; color: Theme.lampGlow }
-                    GradientStop { position: 0.75; color: "transparent" }
-                }
-            }
-
-            // A gilt rail along the counter, worn bright where the light falls
-            Rectangle {
-                width: parent.width
-                height: 1
-                gradient: Gradient {
-                    orientation: Gradient.Horizontal
-
-                    GradientStop { position: 0; color: "transparent" }
-                    GradientStop { position: 0.2; color: Qt.alpha(Theme.oldGold, 0.45) }
-                    GradientStop { position: 0.5; color: Qt.alpha(Theme.gold, 0.8) }
-                    GradientStop { position: 0.8; color: Qt.alpha(Theme.oldGold, 0.45) }
-                    GradientStop { position: 1; color: "transparent" }
-                }
+                Stitching { inset: 3 }
             }
 
             Row {
@@ -75,9 +52,9 @@ Scope {
                 spacing: 12
 
                 CaffeineButton {}
-                BarDivider { text: "❧" }
+                BarDivider {}
                 Clock { anchors.verticalCenter: parent.verticalCenter }
-                BarDivider { text: "☙" }
+                BarDivider {}
                 NotificationButton {}
             }
 

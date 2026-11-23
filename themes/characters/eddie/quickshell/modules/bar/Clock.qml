@@ -2,7 +2,7 @@ import Quickshell
 import QtQuick
 import qs.config
 
-// The hour in serif figures, the day in italics, as on a menu card
+// Dated like an estate's letterhead: the day in serif italics, the hour in serif figures
 Row {
     spacing: 8
 
@@ -17,7 +17,6 @@ Row {
         text: Qt.formatDateTime(clock.date, "dddd d MMMM")
         color: Theme.textSubtle
         font.family: Theme.displayFont
-        font.variableAxes: Theme.displayAxes
         font.pixelSize: Theme.fontLarge
         font.italic: true
     }
@@ -26,10 +25,9 @@ Row {
         id: time
 
         text: Qt.formatDateTime(clock.date, "HH:mm")
-        color: Theme.gold
+        color: Theme.text
         font.family: Theme.displayFont
-        font.variableAxes: Theme.displayAxes
-        font.pixelSize: 18
-        font.weight: Font.Medium
+        font.pixelSize: 17
+        font.weight: Font.DemiBold
     }
 }
