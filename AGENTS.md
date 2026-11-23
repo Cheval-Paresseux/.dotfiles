@@ -19,6 +19,7 @@ themes/<theme>/            a theme, directly in themes/ or in a group (themes/st
   README.md    palette, colour rules, shapes/icons, file map
 scripts/switch-theme.sh   <theme> | --list
 scripts/install.sh        packages, services, login shell, then the death_star theme
+scripts/backup-documents.sh [mount point]: copies ~/Documents (without .git, target/, node_modules/) to <usb key>/<YYYY-MM-DD>/
 scripts/install-sddm.sh   [name]: copies every sddm/<name> to /usr/share/sddm/themes/dotfiles-<name>, starts on one, enables SDDM
 sddm/<name>/              SDDM login screens, one per group of themes (LOGIN_SCREENS in switch-theme.sh)
 ```

@@ -23,6 +23,8 @@ PACKAGES=(
   xdg-desktop-portal-hyprland wl-clipboard cliphist grim slurp brightnessctl playerctl
   # Desktop applications
   zen-browser-bin kitty tmux yazi neovim ripgrep fd fish eza
+  # Backups (scripts/backup-documents.sh)
+  rsync
   # Bar services: battery, power profiles, Bluetooth pairing agent
   upower power-profiles-daemon python-dbus python-gobject
   # Fonts

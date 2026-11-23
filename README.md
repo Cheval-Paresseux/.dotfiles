@@ -59,3 +59,15 @@ sudo reboot
 It is meant for a fresh install: back up any of these directories you want to keep before running it.
 
 After rebooting, log in to the **Hyprland (UWSM)** session.
+
+## 3. Backing up Documents
+
+Plug in a USB key (it appears in `/run/media/$USER/`), then run:
+
+```bash
+~/.dotfiles/scripts/backup-documents.sh
+```
+
+It copies everything in `~/Documents` except the `.git` directories and build output that can be rebuilt (`target/`, `node_modules/`) to a folder named after today's date
+on the key (`YYYY-MM-DD/`), following symlinks. Running it again on the same day only copies what changed. With
+several keys mounted, pass the one to use: `backup-documents.sh "/run/media/$USER/<label>"`.
