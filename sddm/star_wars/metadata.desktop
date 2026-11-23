@@ -4,6 +4,6 @@ Description=Login screen looping one of the live wallpapers, picked at random
 Type=sddm-theme
 MainScript=Main.qml
 ConfigFile=theme.conf
-Theme-Id=dotfiles
+Theme-Id=dotfiles-star_wars
 Theme-API=2.0
 QtVersion=6

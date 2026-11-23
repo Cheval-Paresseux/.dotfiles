@@ -26,7 +26,7 @@ PACKAGES=(
   # Bar services: battery, power profiles, Bluetooth pairing agent
   upower power-profiles-daemon python-dbus python-gobject
   # Fonts
-  ttf-meslo-nerd ttf-fantasque-nerd noto-fonts
+  ttf-meslo-nerd ttf-fantasque-nerd noto-fonts noto-fonts-cjk
   # Development (base-devel compiles Neovim's tree-sitter parsers, Mason unpacks tools with unzip)
   git github-cli rustup base-devel unzip
   # AUR helper

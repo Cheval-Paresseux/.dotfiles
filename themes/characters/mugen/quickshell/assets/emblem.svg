@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="sun" cx="84" cy="66" r="84" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ea5a3a"/>
+      <stop offset="0.6" stop-color="#d23a1e"/>
+      <stop offset="1" stop-color="#a82a16"/>
+    </radialGradient>
+    <linearGradient id="steel" x1="0" y1="94" x2="0" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.45" stop-color="#d9dee3"/>
+      <stop offset="1" stop-color="#7d8892"/>
+    </linearGradient>
+  </defs>
+
+  <!-- The red sun, lit from the top left -->
+  <circle cx="106" cy="92" r="62" fill="url(#sun)"/>
+
+  <!-- A stroke of ink for the ground, and the splatters of a fight -->
+  <path d="M22 168 C60 160 110 164 178 158 C150 166 96 170 30 172 Z" fill="#1e1a17"/>
+  <circle cx="160" cy="150" r="2.5" fill="#1e1a17"/>
+  <circle cx="170" cy="142" r="1.5" fill="#1e1a17"/>
+  <circle cx="36" cy="150" r="2" fill="#1e1a17"/>
+
+  <!-- The katana, drawn across the sun: handle bottom left, tip top right -->
+  <g transform="rotate(-38 100 100)">
+    <!-- Blade, curving slightly, with the temper line along the edge -->
+    <path d="M76 95.5 Q132 92 190 96.5 L184 101 Q130 103.5 76 104 Z" fill="url(#steel)" stroke="#1e1a17" stroke-width="1"/>
+    <path d="M80 101.5 q6 -2 12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0" fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1"/>
+    <!-- Collar and guard -->
+    <rect x="70" y="95" width="6" height="10" fill="#a8740f" stroke="#1e1a17" stroke-width="1"/>
+    <ellipse cx="66" cy="100" rx="4" ry="13" fill="#1e1a17" stroke="#a8740f" stroke-width="1.5"/>
+    <!-- Handle wrapped in cord over the diamonds of the grip -->
+    <rect x="18" y="94.5" width="44" height="11" fill="#1e1a17"/>
+    <path d="M22 100 l3 -3.5 l3 3.5 l-3 3.5 Z M32 100 l3 -3.5 l3 3.5 l-3 3.5 Z M42 100 l3 -3.5 l3 3.5 l-3 3.5 Z M52 100 l3 -3.5 l3 3.5 l-3 3.5 Z" fill="#e9e3d7"/>
+    <rect x="13" y="95.5" width="5" height="9" fill="#5b6670" stroke="#1e1a17" stroke-width="1"/>
+  </g>
+</svg>

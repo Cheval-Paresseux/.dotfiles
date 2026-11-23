@@ -19,13 +19,13 @@ themes/<theme>/            a theme, directly in themes/ or in a group (themes/st
   README.md    palette, colour rules, shapes/icons, file map
 scripts/switch-theme.sh   <theme> | --list
 scripts/install.sh        packages, services, login shell, then the death_star theme
-scripts/install-sddm.sh   copies sddm/ to /usr/share/sddm/themes/dotfiles and enables SDDM
-sddm/                     SDDM login screen (one for all themes: it runs before any session), live wallpapers
+scripts/install-sddm.sh   [name]: copies every sddm/<name> to /usr/share/sddm/themes/dotfiles-<name>, starts on one, enables SDDM
+sddm/<name>/              SDDM login screens, one per group of themes (LOGIN_SCREENS in switch-theme.sh)
 ```
 
 `switch-theme.sh` reloads the running session: Hyprland, Quickshell (restart), kitty and
 Neovim (SIGUSR1), fish (the `dotfiles_theme` universal variable), tmux, and GTK's light/dark mode
-(`hyprland.lua` sets it on `config.reloaded`). Any new config
+(`hyprland.lua` sets it on `config.reloaded`), and picks the group's login screen for the next login. Any new config
 that can reload live should hook into the same mechanism, in every theme. It also links each
 theme's `fish/fish_variables` (ignored by the root `.gitignore`) to `~/.local/state/fish/fish_variables`, so fish
 universal variables are shared by all themes.
@@ -115,7 +115,7 @@ role names, not raw hex, wherever the app allows it.
 | kitty | `kitty +runpy` with `kitty.config.load_config(<path>)` |
 | yazi | `YAZI_CONFIG_HOME=themes/<t>/yazi yazi` starts without errors |
 | tmux | `tmux -L check -f themes/<t>/tmux/tmux.conf new-session -d`, then `tmux -L check kill-server` |
-| SDDM | `sddm-greeter-qt6 --test-mode --theme sddm` opens it in a window; kill it by PID afterwards |
+| SDDM | `sddm-greeter-qt6 --test-mode --theme sddm/<name>` opens it in a window; kill it by PID afterwards |
 | Switcher | `scripts/switch-theme.sh --list`; a live switch to the theme and back |
 | Visuals | screenshots with `grim` (window geometry from `hyprctl clients -j`) |
 

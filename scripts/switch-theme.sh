@@ -5,6 +5,10 @@
 
 THEMES_DIR="$(dirname "$(dirname "$(realpath "$0")")")/themes"
 APPS=(fish hypr kitty nvim quickshell tmux yazi)
+# The login screen (sddm/<name>) shown after switching to a theme of each group
+declare -A LOGIN_SCREENS=([star_wars]=star_wars [characters]=samurai)
+# Written by install-sddm.sh, which gives it to the user
+SDDM_CONF=/etc/sddm.conf.d/theme.conf
 THEME="$1"
 
 # A theme is a directory with a quickshell/ config, directly in themes/ or in a group (themes/star_wars/hoth)
@@ -61,6 +65,13 @@ if [ -f "$theme_vars" ] && [ ! -L "$theme_vars" ] && [ ! -e "$fish_vars" ]; then
 fi
 touch "$fish_vars"
 ln -sfn "$fish_vars" "$theme_vars"
+
+# The login screen follows the theme's group from the next login on (not for ungrouped themes like base)
+login_screen="${LOGIN_SCREENS[$(basename "$(dirname "$THEME_DIR")")]:-}"
+if [ -n "$login_screen" ] && [ -w "$SDDM_CONF" ]; then
+  printf '[Theme]\nCurrent=dotfiles-%s\n' "$login_screen" > "$SDDM_CONF"
+  echo "Login screen: $login_screen"
+fi
 
 # Apply the theme to the running session (Yazi picks it up on its next start)
 if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then

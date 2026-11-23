@@ -1,0 +1,9 @@
+[SddmGreeterTheme]
+Name=Samurai
+Description=Ink and steel: one of the samurai live wallpapers, picked at random
+Type=sddm-theme
+MainScript=Main.qml
+ConfigFile=theme.conf
+Theme-Id=dotfiles-samurai
+Theme-API=2.0
+QtVersion=6
