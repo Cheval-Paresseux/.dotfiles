@@ -4,7 +4,7 @@ import QtQuick
 import qs.config
 
 // Workspaces are tumblers on the counter: each fills with the windows it holds,
-// the one you are in is poured amber and catches the light
+// the one you are in is poured to the brim and catches the light
 Row {
     id: root
 
@@ -40,7 +40,7 @@ Row {
                 bottomRightRadius: 4
                 border.width: 1
                 border.color: workspace.active
-                    ? Theme.honey
+                    ? Theme.paleGold
                     : Qt.alpha(Theme.subtext0, mouseArea.containsMouse ? 0.8 : 0.4)
             }
 
@@ -55,8 +55,8 @@ Row {
                 bottomLeftRadius: 2
                 bottomRightRadius: 2
                 gradient: Gradient {
-                    GradientStop { position: 0; color: workspace.active ? Theme.honey : Qt.alpha(Theme.amber, 0.45) }
-                    GradientStop { position: 1; color: workspace.active ? Theme.brass : Qt.alpha(Theme.brass, 0.45) }
+                    GradientStop { position: 0; color: workspace.active ? Theme.paleGold : Qt.alpha(Theme.gold, 0.45) }
+                    GradientStop { position: 1; color: workspace.active ? Theme.oldGold : Qt.alpha(Theme.oldGold, 0.45) }
                 }
 
                 Behavior on height {

@@ -27,7 +27,7 @@ Slider {
             gradient: Gradient {
                 orientation: Gradient.Horizontal
 
-                GradientStop { position: 0; color: root.dimmed ? Theme.textDisabled : Theme.brass }
+                GradientStop { position: 0; color: root.dimmed ? Theme.textDisabled : Theme.oldGold }
                 GradientStop { position: 1; color: root.dimmed ? Theme.textDisabled : Theme.accent }
             }
         }
@@ -39,7 +39,7 @@ Slider {
         width: 14
         height: 14
         radius: 7
-        color: root.pressed ? Theme.honey : Theme.accent
+        color: root.pressed ? Theme.paleGold : Theme.accent
         border.width: 2
         border.color: Theme.mantle
     }

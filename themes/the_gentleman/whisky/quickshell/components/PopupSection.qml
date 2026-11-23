@@ -10,7 +10,7 @@ Item {
     width: parent ? parent.width : 0
     implicitHeight: 28
 
-    // A brass rule that fades out, like the lines of a menu card
+    // A gilt rule that fades out, like the lines of a menu card
     Rectangle {
         anchors.top: parent.top
         anchors.topMargin: 4
@@ -19,7 +19,7 @@ Item {
         gradient: Gradient {
             orientation: Gradient.Horizontal
 
-            GradientStop { position: 0; color: Qt.alpha(Theme.brass, 0.7) }
+            GradientStop { position: 0; color: Qt.alpha(Theme.oldGold, 0.7) }
             GradientStop { position: 1; color: "transparent" }
         }
     }

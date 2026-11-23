@@ -38,7 +38,7 @@ Scope {
                 }
             }
 
-            // The brass rail along the counter, polished where the light falls
+            // A gilt rail along the counter, worn bright where the light falls
             Rectangle {
                 width: parent.width
                 height: 1
@@ -46,9 +46,9 @@ Scope {
                     orientation: Gradient.Horizontal
 
                     GradientStop { position: 0; color: "transparent" }
-                    GradientStop { position: 0.2; color: Qt.alpha(Theme.brass, 0.6) }
-                    GradientStop { position: 0.5; color: Theme.honey }
-                    GradientStop { position: 0.8; color: Qt.alpha(Theme.brass, 0.6) }
+                    GradientStop { position: 0.2; color: Qt.alpha(Theme.oldGold, 0.45) }
+                    GradientStop { position: 0.5; color: Qt.alpha(Theme.gold, 0.8) }
+                    GradientStop { position: 0.8; color: Qt.alpha(Theme.oldGold, 0.45) }
                     GradientStop { position: 1; color: "transparent" }
                 }
             }

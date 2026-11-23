@@ -27,11 +27,11 @@ return {
       return {
         options = {
           theme = {
-            normal = mode(p.amber),
-            insert = mode(p.velvet),
-            visual = mode(p.smoke),
-            replace = mode(p.wine),
-            command = mode(p.honey),
+            normal = mode(p.gold),
+            insert = mode(p.sage),
+            visual = mode(p.slate),
+            replace = mode(p.claret),
+            command = mode(p.paleGold),
             inactive = mode(p.overlay0),
           },
           globalstatus = true,

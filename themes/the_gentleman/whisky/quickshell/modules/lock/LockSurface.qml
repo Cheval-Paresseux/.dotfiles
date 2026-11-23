@@ -44,8 +44,8 @@ WlSessionLockSurface {
                 focalX: centerX
                 focalY: centerY
 
-                GradientStop { position: 0; color: Qt.alpha(Theme.amber, 0.22) }
-                GradientStop { position: 0.5; color: Qt.alpha(Theme.amber, 0.06) }
+                GradientStop { position: 0; color: Qt.alpha(Theme.gold, 0.12) }
+                GradientStop { position: 0.5; color: Qt.alpha(Theme.gold, 0.035) }
                 GradientStop { position: 1; color: "transparent" }
             }
 
@@ -77,7 +77,7 @@ WlSessionLockSurface {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: Icons.glass
-            color: Theme.honey
+            color: Theme.gold
             font.family: Theme.iconFont
             font.pixelSize: 34
         }
@@ -85,7 +85,7 @@ WlSessionLockSurface {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: "MEMBERS ONLY"
-            color: Theme.brass
+            color: Theme.oldGold
             font.pixelSize: Theme.fontSmall
             font.bold: true
             font.letterSpacing: 5
@@ -116,7 +116,7 @@ WlSessionLockSurface {
             topPadding: 10
             bottomPadding: 22
             text: "───────  ❦  ───────"
-            color: Theme.brass
+            color: Theme.oldGold
             font.family: Theme.iconFont
             font.pixelSize: Theme.fontLarge
         }

@@ -10,9 +10,9 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			-- Light through a glass of whisky: honey where it catches the lamp, brass at the base
-			active_border = { colors = { "rgb(f2c37d)", "rgb(e3a14e)", "rgb(9a7038)" }, angle = 135 },
-			inactive_border = "rgb(2a2119)",
+			-- Antique gilt: pale where it catches the lamp, darkened gold at the base
+			active_border = { colors = { "rgb(e3cf9c)", "rgb(c8a96a)", "rgb(7d6535)" }, angle = 135 },
+			inactive_border = "rgb(1f2a23)",
 		},
 	},
 
@@ -20,15 +20,15 @@ hl.config({
 		rounding = 10,
 		rounding_power = 3,
 
-		-- Lumière tamisée: the focused window sits in a warm glow, the others sink into the dark
+		-- Lumière tamisée: the focused window sits in a faint glow, the others sink into the dark
 		dim_inactive = true,
 		dim_strength = 0.15,
 
 		shadow = {
-			range = 28,
-			render_power = 2,
-			color = 0x55e3a14e,
-			color_inactive = 0xdd0c0907,
+			range = 22,
+			render_power = 3,
+			color = 0x26c8a96a,
+			color_inactive = 0xdd0a0d0b,
 		},
 
 		-- Smoked glass behind translucent windows (kitty) and Quickshell (see rules.lua)
@@ -49,7 +49,7 @@ hl.config({
 	misc = {
 		-- The wallpaper is drawn by quickshell
 		force_default_wallpaper = 0,
-		background_color = "rgb(0c0907)",
+		background_color = "rgb(0a0d0b)",
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
 	},

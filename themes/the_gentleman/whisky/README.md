@@ -1,12 +1,12 @@
 # Whisky theme
 
-The first room of *The Gentleman*: a private lounge after hours, lumière tamisée.
-A glass of whisky under a single lamp, a cigar resting in the ashtray, a record
-turning, a guest in an old armchair. The room is tobacco-dark wood and cream,
-amber whisky marks whatever has your attention, and the rest of the lounge lends
-its colours sparingly: bottle-green velvet, blue-grey smoke, a cigar's ember and
-a glass of wine. Light is low and warm: the focused window glows, the others sink
-into the dark. Titles are set in Playfair's high-contrast serif and italics, like a drinks menu.
+The first room of *The Gentleman*: a private club after hours, in the quiet luxury
+of old money. Nothing here asks to be noticed. The room is bottle-green velvet in
+the dark and ivory paper, antique gold marks whatever has your attention, and the
+rest of the club lends its colours sparingly and muted: sage, blue-grey smoke,
+cognac and claret. Light is low (lumière tamisée): the focused window sits in a
+faint glow, the others sink into the dark. Titles are set in Playfair's
+high-contrast serif and italics, like a drinks menu.
 
 Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh whisky`.
 
@@ -14,51 +14,54 @@ Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh whisky`.
 
 | Level | Colour | Meaning | Examples |
 |---|---|---|---|
-| Structure | tobacco darks | backgrounds, borders, secondary text | panels, separators, line numbers |
-| Content | cream `#eadcc2` | what you are reading | file contents, titles, clock |
-| Focus | amber `#e3a14e` | where you are, what is selected | active window border and glow, the poured workspace glass, cursor, selected item, prompt directory, section titles, keywords, hovered bar icons, the record while it plays |
-| Info | smoke `#8da4bf` | neutral information | notifications, connected guests (Bluetooth), functions, commands |
-| Success | velvet `#7aa874` | good / added | charging, git additions, successful command (❧), strings |
-| Warning | ember `#e8743c` | needs attention | battery under 30%, git changes, search matches, types, the lit cigar (keep awake) |
-| Critical | wine `#c94a52` | error / destructive | errors, failed command (❧), muted audio, battery under 15%, shut down |
-| Other | honey, brass, rose, teal, tobacco | syntax highlighting and ornaments | numbers, operators, parameters, the clock's figures, fleurons and rules, gradients |
+| Structure | bottle-green darks | backgrounds, borders, secondary text | panels, separators, line numbers |
+| Content | ivory `#e4dcc8` | what you are reading | file contents, titles |
+| Focus | antique gold `#c8a96a` | where you are, what is selected | active window border and glow, the poured workspace glass, the clock's hour, cursor, selected item, prompt directory, section titles, keywords, hovered bar icons, the record while it plays |
+| Info | slate `#8b9cab` | neutral information | notifications, connected guests (Bluetooth), functions, commands |
+| Success | sage `#88a878` | good / added | charging, git additions, successful command (❧), strings |
+| Warning | cognac `#c98a4b` | needs attention | battery under 30%, git changes, search matches, types, the lit cigar (keep awake) |
+| Critical | claret `#b24a4f` | error / destructive | errors, failed command (❧), muted audio, battery under 15%, shut down |
+| Other | pale gold, old gold, heather, verdigris, camel | syntax highlighting and ornaments | numbers, operators, parameters, fleurons and rules, gilt gradients |
+
+Every accent is kept muted and close in value, so the room stays calm: colour is a
+detail you find, not something that calls out.
 
 ## Palette
 
 | Neutral | Hex | Used for |
 |---|---|---|
-| crust | `#0c0907` | Quickshell bar, tmux status, text on accent |
-| base | `#110d0a` | terminal background, kitty tab bar |
-| mantle | `#17120e` | popups, cursor line |
-| surface0 | `#201913` | buttons, ANSI black |
-| surface1 | `#2a2119` | hovered rows, inactive borders |
-| surface2 | `#382b20` | selected rows, selection, borders, empty-list emblems |
-| overlay0 | `#5a4838` | autosuggestions, bright black |
-| overlay1 | `#7a6652` | comments, disabled and hint text |
-| subtext0 | `#a8957d` | secondary text, the date |
-| subtext1 | `#cbb89c` | muted text, ANSI white |
-| text | `#eadcc2` | cream: main text, bright white |
+| crust | `#0a0d0b` | Quickshell bar, tmux status, text on accent |
+| base | `#0e1210` | terminal background, kitty tab bar |
+| mantle | `#121815` | popups, cursor line |
+| surface0 | `#18201b` | buttons, ANSI black |
+| surface1 | `#1f2a23` | hovered rows, inactive borders |
+| surface2 | `#2a372e` | selected rows, selection, borders, empty-list emblems |
+| overlay0 | `#45524a` | autosuggestions, bright black |
+| overlay1 | `#66716a` | comments, disabled and hint text |
+| subtext0 | `#9a9f94` | secondary text, the date |
+| subtext1 | `#c2bfae` | muted text, ANSI white |
+| text | `#e4dcc8` | ivory: main text, bright white |
 
 | Accent | Hex | ANSI (normal / bright) |
 |---|---|---|
-| wine | `#c94a52` | 1 / 9 (`#dc6b71`) |
-| velvet | `#7aa874` | 2 / 10 (`#98c290`) |
-| amber | `#e3a14e` | accent, 3 / 11 (honey `#f2c37d`) |
-| smoke | `#8da4bf` | 4 / 12 (`#a9bdd3`) |
-| rose | `#c9849b` | 5 / 13 (`#dca3b5`) |
-| teal | `#6fa89a` | 6 / 14 (`#8fc2b5`) |
-| ember | `#e8743c` | |
-| honey | `#f2c37d` | the clock, the light end of gradients |
-| brass | `#9a7038` | fleurons, rules, float borders, the dark end of gradients |
-| tobacco | `#c79a6a` | parameters (Neovim) |
+| claret | `#b24a4f` | 1 / 9 (`#c96a6c`) |
+| sage | `#88a878` | 2 / 10 (`#a3bf93`) |
+| gold | `#c8a96a` | accent, 3 / 11 (pale gold `#e3cf9c`) |
+| slate | `#8b9cab` | 4 / 12 (`#a8b6c2`) |
+| heather | `#9c7f9a` | 5 / 13 (`#b79db4`) |
+| verdigris | `#6f9a8e` | 6 / 14 (`#8db5a9`) |
+| cognac | `#c98a4b` | |
+| pale gold | `#e3cf9c` | the light end of gilt gradients |
+| old gold | `#7d6535` | fleurons, rules, float borders, the dark end of gilt gradients |
+| camel | `#b89a72` | parameters (Neovim) |
 
 ## Shapes, icons and words
 
-- Lumière tamisée: unfocused windows are dimmed, the focused one has a honey-to-brass border and a soft amber glow, like the glass under the lamp. Corners are softly rounded (10 px), gaps generous.
+- Lumière tamisée: unfocused windows are dimmed, the focused one has an antique gilt border and a faint gold glow, like the glass under the lamp. Corners are softly rounded (10 px), gaps generous.
 - Smoked glass: kitty, the bar, popups and toasts are translucent over a dark, slightly grainy blur. Neovim and Yazi leave the background unset so the glass shows through.
-- The bar is the counter: smoked glass under a brass rail polished where the lamp falls, and the lamp's warm pool of light behind the clock in the middle.
-- The clock is set like a menu card: the day in serif italics, the hour in honey serif figures, between two fleurons (❧ ☙). Sections are set apart by small brass fleurons (❦).
-- Workspaces are tumblers on the counter: each fills with the windows it holds, and the one you are in is poured to the brim in amber.
+- The bar is the counter: smoked glass under a gilt rail worn bright where the lamp falls, and a faint pool of lamplight behind the clock in the middle.
+- The clock is set like a menu card: the day in serif italics, the hour in gold serif figures, between two fleurons (❧ ☙). Sections are set apart by small gilt fleurons (❦).
+- Workspaces are tumblers on the counter: each fills with the windows it holds, and the one you are in is poured to the brim in gold.
 - The turntable: what is playing (any MPRIS player) is shown in italics next to a record that turns at 33⅓ while the music plays. Click to pause or play, scroll to change track.
 - Motion is an unhurried pour: windows settle in softly, workspaces fade like moving to another room, the light sweeps once over a newly focused window.
 - Bar icons: armchair (wallpapers), the bottles behind the bar (apps), a cigar (keep awake: lit while it is on), the front desk's bell (notifications, a closed door for Do Not Disturb), candle / lamp / candelabra (brightness), the door out (power).
@@ -66,8 +69,8 @@ Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh whisky`.
 - Pickers: "What will it be tonight?" (apps, "Not on the menu" when nothing matches), the notebook (clipboard), scenes (wallpapers), rooms (themes).
 - Empty lists show a faint object from the lounge: an empty tray, an empty armchair, a glass.
 - Lock screen: the lamp above the door, its light breathing like a flame; a glass, MEMBERS ONLY, a large serif clock, the date in italics, and "The door is closed. Password, please."
-- Fish: the barman greets you according to the hour, and reads the session's uptime like an age statement ("this session, aged 2 h 14 min"). The prompt ends in a fleuron, velvet after a success and wine after a failure.
-- Neovim opens on a smoking tumbler above a letter-spaced WHISKY, between fleurons; lualine sections have rounded ends like leather tabs. kitty and tmux tabs are separated by brass fleurons, the current one in amber italics.
+- Fish: the barman greets you according to the hour, and reads the session's uptime like an age statement ("this session, aged 2 h 14 min"). The prompt ends in a fleuron, sage after a success and claret after a failure.
+- Neovim opens on a smoking tumbler above a letter-spaced WHISKY, between fleurons; lualine sections have rounded ends like leather tabs. kitty and tmux tabs are separated by gilt fleurons, the current one in gold italics.
 - Wallpapers: a glass and a cigar under the lamp (the default), a record on the turntable, a guest in the armchair.
 - Theme picker: The Gentleman's themes appear as objects from their scene, in a row of their own; this one is a snifter holding a dram, smoke drifting over the rim, in a pool of lamplight.
 

@@ -26,7 +26,7 @@ Row {
         id: time
 
         text: Qt.formatDateTime(clock.date, "HH:mm")
-        color: Theme.honey
+        color: Theme.gold
         font.family: Theme.displayFont
         font.variableAxes: Theme.displayAxes
         font.pixelSize: 18

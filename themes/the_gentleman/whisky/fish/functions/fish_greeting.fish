@@ -20,18 +20,18 @@ function fish_greeting
         set age (math -s0 $uptime / 60)" h "(math $uptime % 60)" min"
     end
 
-    set_color 5a4838
+    set_color 45524a
     echo -n "❧ "
-    set_color --italics eadcc2
+    set_color --italics e4dcc8
     echo -n "$greeting, "
-    set_color --bold --italics e3a14e
+    set_color --bold --italics c8a96a
     echo -n (whoami)
     set_color normal
-    set_color --italics eadcc2
+    set_color --italics e4dcc8
     echo "."
-    set_color --italics a8957d
+    set_color --italics 9a9f94
     echo "  $line"
-    set_color 7a6652
+    set_color 66716a
     echo "  "(date '+%A %d %B · %H:%M')"  ·  this session, aged $age"
     set_color normal
 end

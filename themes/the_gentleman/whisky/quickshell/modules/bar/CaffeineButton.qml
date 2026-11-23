@@ -8,7 +8,7 @@ BarButton {
     id: root
 
     icon: ShellState.caffeine ? Icons.cigar : Icons.cigarOff
-    color: ShellState.caffeine ? Theme.ember : (hovered ? Theme.accent : Theme.textDisabled)
+    color: ShellState.caffeine ? Theme.cognac : (hovered ? Theme.accent : Theme.textDisabled)
     onClicked: ShellState.caffeine = !ShellState.caffeine
 
     IdleInhibitor {

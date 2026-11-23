@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
   <defs>
     <linearGradient id="whisky" x1="0" y1="122" x2="0" y2="150" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f2c37d"/>
-      <stop offset="0.35" stop-color="#e3a14e"/>
-      <stop offset="0.8" stop-color="#9a7038"/>
-      <stop offset="1" stop-color="#5a3a18"/>
+      <stop offset="0" stop-color="#d9a96a"/>
+      <stop offset="0.35" stop-color="#b9803f"/>
+      <stop offset="0.8" stop-color="#7a4f24"/>
+      <stop offset="1" stop-color="#3e2612"/>
     </linearGradient>
     <radialGradient id="glass" cx="74" cy="70" r="90" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#eadcc2" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#eadcc2" stop-opacity="0.04"/>
+      <stop offset="0" stop-color="#e4dcc8" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#e4dcc8" stop-opacity="0.04"/>
     </radialGradient>
     <radialGradient id="pool" cx="100" cy="182" r="60" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#e3a14e" stop-opacity="0.45"/>
-      <stop offset="1" stop-color="#e3a14e" stop-opacity="0"/>
+      <stop offset="0" stop-color="#c8a96a" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#c8a96a" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -20,19 +20,19 @@
   <ellipse cx="100" cy="182" rx="70" ry="12" fill="url(#pool)"/>
 
   <!-- A wisp of cigar smoke drifting over the rim -->
-  <path d="M110 40 C102 30 118 24 108 12 S114 8 110 4" fill="none" stroke="#8da4bf" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M90 42 C84 34 94 28 88 20" fill="none" stroke="#8da4bf" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M110 40 C102 30 118 24 108 12 S114 8 110 4" fill="none" stroke="#8b9cab" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M90 42 C84 34 94 28 88 20" fill="none" stroke="#8b9cab" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/>
 
   <!-- Foot and stem -->
-  <ellipse cx="100" cy="181" rx="32" ry="7" fill="#eadcc2" fill-opacity="0.12" stroke="#eadcc2" stroke-opacity="0.55" stroke-width="1.5"/>
-  <path d="M97 149 L96 179 L104 179 L103 149 Z" fill="#eadcc2" fill-opacity="0.18" stroke="#eadcc2" stroke-opacity="0.5" stroke-width="1"/>
+  <ellipse cx="100" cy="181" rx="32" ry="7" fill="#e4dcc8" fill-opacity="0.12" stroke="#e4dcc8" stroke-opacity="0.55" stroke-width="1.5"/>
+  <path d="M97 149 L96 179 L104 179 L103 149 Z" fill="#e4dcc8" fill-opacity="0.18" stroke="#e4dcc8" stroke-opacity="0.5" stroke-width="1"/>
 
   <!-- The bowl of a snifter, narrow at the mouth, a dram of whisky inside -->
   <path d="M71.2 46 A56 56 0 1 0 128.8 46" fill="url(#glass)"/>
   <path d="M51.5 122 A56 56 0 0 0 148.5 122 Z" fill="url(#whisky)"/>
-  <ellipse cx="100" cy="122" rx="48.5" ry="5" fill="#f2c37d" fill-opacity="0.6"/>
-  <path d="M71.2 46 A56 56 0 1 0 128.8 46" fill="none" stroke="#eadcc2" stroke-opacity="0.6" stroke-width="2"/>
-  <ellipse cx="100" cy="46" rx="28.8" ry="4.5" fill="none" stroke="#eadcc2" stroke-opacity="0.6" stroke-width="2"/>
+  <ellipse cx="100" cy="122" rx="48.5" ry="5" fill="#d9b07a" fill-opacity="0.5"/>
+  <path d="M71.2 46 A56 56 0 1 0 128.8 46" fill="none" stroke="#e4dcc8" stroke-opacity="0.6" stroke-width="2"/>
+  <ellipse cx="100" cy="46" rx="28.8" ry="4.5" fill="none" stroke="#e4dcc8" stroke-opacity="0.6" stroke-width="2"/>
 
   <!-- The lamp caught on the glass, top left -->
   <path d="M62 68 A48 48 0 0 0 52 98" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
