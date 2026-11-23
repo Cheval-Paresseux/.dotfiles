@@ -32,7 +32,7 @@ universal variables are shared by all themes.
 
 Themes are named by their directory (`hoth`, not `star_wars/hoth`), so names must be unique across groups.
 A group holds up to five themes: the theme picker shows one row per group, its emblems drawn in the
-group's style (Star Wars: planets; The Gentleman: objects from the scene).
+group's style (Star Wars: planets; Characters: objects from the scene).
 `themes/base` is the reference: simple, square, neutral greys with vivid accents. It is a template for new
 themes, not offered in the theme picker (`switch-theme.sh base` still works for testing).
 Every theme ships the same app directories (the switcher refuses a theme with one missing).
@@ -77,7 +77,7 @@ role names, not raw hex, wherever the app allows it.
    `defaultWallpaper` in `quickshell/config/Theme.qml` (the default must be a file that exists).
    Draw the theme's own `quickshell/assets/emblem.svg` (200×200, lit from the top left, in the theme's
    palette) in its group's style so it can be told apart in the theme picker: a planet of radius 70 at
-   the centre for Star Wars, an object from the theme's scene for The Gentleman (whisky: a snifter).
+   the centre for Star Wars, an object from the theme's scene for Characters (eddie: a snifter).
 
 2. **Adapt every component with what is already installed.** Go beyond recolouring:
    - *Palette*: derive it from the wallpapers; keep the role mapping above. Update every app:

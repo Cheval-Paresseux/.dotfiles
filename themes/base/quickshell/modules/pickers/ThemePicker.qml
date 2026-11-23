@@ -3,7 +3,7 @@ import Quickshell.Io
 import QtQuick
 import qs.config
 
-// One row per group of themes (star_wars, the_gentleman...), its name on the left
+// One row per group of themes (star_wars, characters...), its name on the left
 PickerWindow {
     id: root
 
