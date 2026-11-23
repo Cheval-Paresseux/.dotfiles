@@ -41,7 +41,7 @@ The system side is left to the installer and to you; check it works before going
 ## 2. Desktop environment
 
 ```bash
-git clone https://github.com/Cheval-Paresseux/dotfiles.git ~/.dotfiles
+git clone https://github.com/Cheval-Paresseux/.dotfiles.git ~/.dotfiles
 ~/.dotfiles/scripts/install.sh
 sudo reboot
 ```
