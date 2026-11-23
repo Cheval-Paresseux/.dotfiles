@@ -64,7 +64,7 @@ PickerWindow {
         isCurrent: path => path === Settings.wallpaperPath
         emptyText: root.wallpapers.length === 0
             ? "No wallpapers found.\nAdd images to ~/Pictures/Wallpapers"
-            : "No matching wallpapers"
+            : "No such scene"
         onActivated: path => root.apply(path)
     }
 

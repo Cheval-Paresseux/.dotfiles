@@ -12,7 +12,7 @@ PickerWindow {
         : entries
 
     name: "clipboard"
-    placeholder: "What did you pocket?..."
+    placeholder: "Search your pockets..."
 
     onQueryChanged: list.currentIndex = 0
     onOpened: listProcess.running = true

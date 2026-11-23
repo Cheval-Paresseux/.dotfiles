@@ -106,7 +106,7 @@ PickerWindow {
         labelOf: theme => theme?.name.toUpperCase() ?? ""
         labelBold: true
         isCurrent: theme => theme?.name === Theme.name
-        emptyText: "No matching themes"
+        emptyText: "No road goes there"
         onActivated: theme => root.apply(theme)
     }
 
