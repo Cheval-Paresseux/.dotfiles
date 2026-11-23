@@ -99,6 +99,8 @@ WlSessionLockSurface {
             font.variableAxes: Theme.displayAxes
             font.pixelSize: 108
             font.weight: Font.Light
+            // Distance-field text breaks up the overlapping outlines of a variable font at this size
+            renderType: Text.CurveRendering
         }
 
         Text {

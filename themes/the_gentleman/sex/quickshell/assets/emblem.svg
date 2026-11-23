@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="satin" x1="40" y1="60" x2="150" y2="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5c3a4b"/>
+      <stop offset="0.35" stop-color="#2a1822"/>
+      <stop offset="1" stop-color="#0b0709"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="100" cy="96" r="95" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f03c96" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#f03c96" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Neon light behind it -->
+  <circle cx="100" cy="96" r="95" fill="url(#glow)"/>
+
+  <!-- Crimson satin ribbons falling from the ties -->
+  <path d="M30 98 C18 112 34 128 22 146 S26 172 16 186" fill="none" stroke="#8e1538" stroke-width="5" stroke-linecap="round"/>
+  <path d="M170 98 C182 112 166 128 178 146 S174 172 184 186" fill="none" stroke="#8e1538" stroke-width="5" stroke-linecap="round"/>
+  <path d="M30 98 C24 108 32 118 28 128" fill="none" stroke="#f7a8c8" stroke-opacity="0.35" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- The mask, its eyes cut out -->
+  <path fill-rule="evenodd" fill="url(#satin)" stroke="#f03c96" stroke-width="2" stroke-linejoin="round"
+    d="M100 78 C88 68 64 60 42 64 C26 54 20 56 22 64 C24 70 28 72 30 76 C22 90 26 108 40 116 C56 126 76 122 86 112 C92 106 96 102 100 102 C104 102 108 106 114 112 C124 122 144 126 160 116 C174 108 178 90 170 76 C172 72 176 70 178 64 C180 56 174 54 158 64 C136 60 112 68 100 78 Z
+       M50 92 A16 9 0 1 0 82 92 A16 9 0 1 0 50 92 Z
+       M118 92 A16 9 0 1 0 150 92 A16 9 0 1 0 118 92 Z"/>
+
+  <!-- Lace dots along the brow -->
+  <g fill="#f7a8c8" fill-opacity="0.55">
+    <circle cx="48" cy="74" r="1.6"/><circle cx="58" cy="71" r="1.6"/><circle cx="68" cy="70" r="1.6"/><circle cx="78" cy="72" r="1.6"/>
+    <circle cx="122" cy="72" r="1.6"/><circle cx="132" cy="70" r="1.6"/><circle cx="142" cy="71" r="1.6"/><circle cx="152" cy="74" r="1.6"/>
+  </g>
+
+  <!-- A small neon heart between the eyes -->
+  <path d="M100 94 C96 90 92 88 92 84.5 C92 81.5 96 80.5 100 84 C104 80.5 108 81.5 108 84.5 C108 88 104 90 100 94 Z" fill="#f03c96"/>
+
+  <!-- Sheen where the light catches the satin, top left -->
+  <path d="M36 84 C40 74 54 68 70 68" fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round"/>
+</svg>
