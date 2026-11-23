@@ -6,8 +6,8 @@ and oak, its text the oatmeal of a good tweed. The scarlet of the hunting coat m
 whatever has your attention, and the overchecks of the tweed carry the rest: moss for
 success, mustard for warnings, lovat blue for information, claret for danger. Saddlery
 holds it together: leather stitched along its edges, set with brass rivets. Nothing is
-glass here; everything is matte and opaque, like waxed cotton. Titles are set in Noto
-Serif Display, like an estate's letterhead, and the family arms (a chevron between three
+glass here; everything is matte and opaque, like waxed cotton. Titles are set in EB
+Garamond, an old-style serif like an estate's letterhead, and the family arms (a chevron between three
 fleurs-de-lis, under a ducal coronet) turn up on the lock screen and in Neovim.
 
 Switch to it with `SUPER + T` or `~/.dotfiles/scripts/switch-theme.sh eddie`.
@@ -63,7 +63,7 @@ claret). Text on scarlet and claret is cream; on the lighter tweeds it is dark.
 - Matte, not glass: no blur and no transparency. Corners are barely rounded (4 px); windows rest on a soft, heavy shadow, the focused one edged in the scarlet of a hunting coat, a shade deeper in the folds.
 - Saddlery: the bar is a leather strap, stitched along its edges, its sections set apart by brass rivets. Popups and pickers are stitched the same way, and the slider's handle is a rivet.
 - Workspaces are small heraldic shields numbered in Roman figures (I, II, III…), the current one emblazoned in scarlet.
-- The clock is dated like a letterhead: the day in serif italics, the hour in serif figures.
+- The clock is dated like a letterhead: the day in Garamond italics, the hour in Garamond figures.
 - Motion is a steady canter: windows come in at an even pace and settle without fuss, leave with a nod, and workspaces ride past like the next field over the hedge.
 - The gramophone in the drawing room: what is playing (any MPRIS player) is shown in italics next to a turning record. Click to pause or play, scroll to change track.
 - Bar icons: a frame from the gallery (wallpapers), the butler's bell (apps), the kettle (keep awake: on the boil while it is on), a sealed letter for the post (opened when there is nothing new, the estate gates for Do Not Disturb), overcast / bright spells / the rare sunny day (brightness), the door out (power).
@@ -73,22 +73,14 @@ claret). Text on scarlet and claret is cream; on the lighter tweeds it is dark.
 - Lock screen: the family arms in scarlet edged in brass, PRIVATE ESTATE, a large serif clock, the date in italics, and "The gates are shut. State your business."
 - Fish: good day from the estate according to the hour, addressed to Your Grace, and how long you have been out in the fields (the uptime). The prompt ends in a fleur-de-lis, moss after a success and claret after a failure.
 - Neovim opens on the family arms under a ducal coronet, above a letter-spaced EDDIE; lualine sections have rounded ends like the leather tabs of a ledger. kitty and tmux tabs are set apart by fleurs-de-lis, the current one in scarlet.
-- Wallpapers: the three images from the lounge are still in place (a glass and a cigar, a record, a guest in an armchair); country-estate images would suit the theme better (see below).
+- Wallpapers: the estate's land seen from the fell above the lake (the default), a house at the edge of the forest under the mountains, a red car on a wet road through the larches.
 - Theme picker: the Characters themes appear as objects from their scene, in a row of their own; this one is a flat cap in heather tweed with a scarlet overcheck.
 
 ## Fonts
 
 - Monospace and icons: **MesloLGM Nerd Font** (`ttf-meslo-nerd`)
-- Clock, popup titles, workspace numerals, italics and lock screen: **Noto Serif Display** (`noto-fonts`)
+- Clock, popup titles, workspace numerals, italics and lock screen: **EB Garamond** (`ebgaramond-otf`, AUR)
 - Interface: system sans-serif
-
-## Wallpapers that would fit
-
-The palette was drawn from the estate itself rather than from the current wallpapers. Images
-in the same mood: a country house or its gun room, misty fields and hedgerows, a shooting
-party or a hunt, tweed, oak panelling, horses and hounds, ideally dark and muted with a touch
-of red. Put them in `quickshell/assets/wallpapers/` and set `defaultWallpaper` in
-`quickshell/config/Theme.qml`.
 
 ## Where each app gets it
 

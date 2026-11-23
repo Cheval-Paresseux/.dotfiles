@@ -72,11 +72,11 @@ Singleton {
 
     readonly property string iconFont: "MesloLGM Nerd Font Propo"
     readonly property int iconSize: 15
-    // Set like an estate's letterhead: titles, the clock, workspace numerals and the lock screen
-    readonly property string displayFont: "Noto Serif Display"
+    // An old-style serif, like an estate's letterhead: titles, the clock, workspace numerals and the lock screen
+    readonly property string displayFont: "EB Garamond"
 
     readonly property int barHeight: 32
 
     readonly property string wallpaperDirectory: Quickshell.shellPath("assets/wallpapers")
-    readonly property string defaultWallpaper: wallpaperDirectory + "/whisky.png"
+    readonly property string defaultWallpaper: wallpaperDirectory + "/land.jpg"
 }

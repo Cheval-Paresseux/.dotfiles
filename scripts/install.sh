@@ -32,7 +32,7 @@ PACKAGES=(
   # AUR helper
   paru
 )
-AUR_PACKAGES=(ttf-oxanium ttf-playfair-variable)
+AUR_PACKAGES=(ttf-oxanium ttf-playfair-variable ebgaramond-otf)
 
 sudo pacman -S --needed "${PACKAGES[@]}"
 paru -S --needed "${AUR_PACKAGES[@]}"

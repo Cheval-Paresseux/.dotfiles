@@ -49,7 +49,7 @@ sudo reboot
 `scripts/install.sh` asks for `sudo` when needed and can be run again safely. It:
 
 - installs the packages of the desktop (Hyprland, Quickshell, apps, fonts, development tools) from
-  the repositories, and the Oxanium and Playfair fonts from the AUR with `paru`; the list is at the top of the script,
+  the repositories, and the Oxanium, Playfair and EB Garamond fonts from the AUR with `paru`; the list is at the top of the script,
 - sets up Rust (`rustup default stable`, used by Neovim; language servers and formatters come from Mason),
 - installs the login screens (Star Wars first) and makes SDDM the display manager (`scripts/install-sddm.sh`),
 - makes fish the login shell,

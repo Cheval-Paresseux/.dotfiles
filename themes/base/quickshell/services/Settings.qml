@@ -9,7 +9,9 @@ import qs.config
 Singleton {
     id: root
 
-    readonly property string wallpaperPath: adapter.wallpaper || Theme.defaultWallpaper
+    // A saved wallpaper whose file has since been deleted gives way to the theme's default
+    property bool savedWallpaperMissing: false
+    readonly property string wallpaperPath: adapter.wallpaper && !savedWallpaperMissing ? adapter.wallpaper : Theme.defaultWallpaper
     readonly property url wallpaper: "file://" + wallpaperPath
 
     function setWallpaper(path) {
@@ -20,7 +22,11 @@ Singleton {
         path: Quickshell.statePath("settings-" + Theme.name + ".json")
         printErrors: false
 
-        onAdapterUpdated: writeAdapter()
+        onLoaded: wallpaperCheck.running = true
+        onAdapterUpdated: {
+            writeAdapter()
+            wallpaperCheck.running = true
+        }
         onLoadFailed: error => {
             if (error === FileViewError.FileNotFound)
                 writeAdapter()
@@ -31,6 +37,13 @@ Singleton {
 
             property string wallpaper: ""
         }
+    }
+
+    Process {
+        id: wallpaperCheck
+
+        command: ["test", "-f", adapter.wallpaper]
+        onExited: code => root.savedWallpaperMissing = code !== 0
     }
 
     IpcHandler {
