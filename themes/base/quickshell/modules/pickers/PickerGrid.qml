@@ -1,7 +1,9 @@
 import QtQuick
 import qs.config
 
-// Grid of image cards with keyboard navigation (wallpapers, and planets in the theme picker)
+// Grid of image cards with keyboard navigation (wallpapers, and theme emblems in the theme picker).
+// A null entry is an empty cell (the theme picker ends each group's row with them): it is
+// not drawn and never selected.
 GridView {
     id: root
 
@@ -22,16 +24,20 @@ GridView {
         case Qt.Key_Right:
         case Qt.Key_Tab:
             moveCurrentIndexRight()
+            skipEmptyCells(1)
             break
         case Qt.Key_Left:
         case Qt.Key_Backtab:
             moveCurrentIndexLeft()
+            skipEmptyCells(-1)
             break
         case Qt.Key_Down:
             moveCurrentIndexDown()
+            skipEmptyCells(-1)
             break
         case Qt.Key_Up:
             moveCurrentIndexUp()
+            skipEmptyCells(-1)
             break
         case Qt.Key_Return:
         case Qt.Key_Enter:
@@ -42,6 +48,14 @@ GridView {
             return false
         }
         return true
+    }
+
+    // Keep going the same way past empty cells; at the end of the grid, come back to the last entry
+    function skipEmptyCells(step) {
+        while (model[currentIndex] === null && currentIndex + step >= 0 && currentIndex + step < count)
+            currentIndex += step
+        while (model[currentIndex] === null && currentIndex > 0)
+            currentIndex--
     }
 
     clip: true
@@ -60,6 +74,7 @@ GridView {
 
         width: root.cellWidth
         height: root.cellHeight
+        visible: modelData !== null
 
         Rectangle {
             id: frame

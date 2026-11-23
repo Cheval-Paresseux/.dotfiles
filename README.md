@@ -17,7 +17,8 @@
 | File Editor | Neovim |
 | Web Browser | Zen (not themed) |
 
-Themes live in `themes/`: [`base`](themes/base/README.md) (neutral greys), [`tatooine`](themes/tatooine/README.md) (desert dusk), [`death_star`](themes/death_star/README.md) (Imperial gunmetal and saber red), [`dagobah`](themes/dagobah/README.md) (misty swamp and a blue saber), [`hoth`](themes/hoth/README.md) (a light theme of snow and ice) and [`coruscant`](themes/coruscant/README.md) (Art Deco onyx and champagne gold). Switch with `SUPER + T` (each theme appears as a planet) or `scripts/switch-theme.sh <theme>`: Hyprland, Quickshell, kitty, fish, Neovim and tmux reload in place, GTK apps switch to the theme's light or dark mode; Yazi follows on its next start.
+Themes are grouped by universe. Star Wars, in `themes/star_wars/`: [`tatooine`](themes/star_wars/tatooine/README.md) (desert dusk), [`death_star`](themes/star_wars/death_star/README.md) (Imperial gunmetal and saber red), [`dagobah`](themes/star_wars/dagobah/README.md) (misty swamp and a blue saber), [`hoth`](themes/star_wars/hoth/README.md) (a light theme of snow and ice) and [`coruscant`](themes/star_wars/coruscant/README.md) (Art Deco onyx and champagne gold). The Gentleman, in `themes/the_gentleman/`: [`whisky`](themes/the_gentleman/whisky/README.md) (a lounge after hours, amber under a low lamp). Switch with `SUPER + T` (one row per group: the Star Wars themes appear as planets, The Gentleman's as objects from their scene) or `scripts/switch-theme.sh <theme>`: Hyprland, Quickshell, kitty, fish, Neovim and tmux reload in place, GTK apps switch to the theme's light or dark mode; Yazi follows on its next start.
+[`themes/base`](themes/base/README.md) (neutral greys) is the template for new themes: it is not in the picker, but `scripts/switch-theme.sh base` still applies it.
 
 # Installation
 
@@ -48,12 +49,12 @@ sudo reboot
 `scripts/install.sh` asks for `sudo` when needed and can be run again safely. It:
 
 - installs the packages of the desktop (Hyprland, Quickshell, apps, fonts, development tools) from
-  the repositories, and the Oxanium font from the AUR with `paru`; the list is at the top of the script,
+  the repositories, and the Oxanium and Playfair fonts from the AUR with `paru`; the list is at the top of the script,
 - sets up Rust (`rustup default stable`, used by Neovim; language servers and formatters come from Mason),
 - installs the login screen and makes SDDM the display manager (`scripts/install-sddm.sh`),
 - makes fish the login shell,
 - deletes the default configs of a fresh install (`~/.config/fish`, `hypr`, `kitty`, `nvim`, `quickshell`,
-  `tmux`, `yazi`, when they are real directories) and links the `base` theme in their place.
+  `tmux`, `yazi`, when they are real directories) and links the `death_star` theme in their place.
 
 It is meant for a fresh install: back up any of these directories you want to keep before running it.
 

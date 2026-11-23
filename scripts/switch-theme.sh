@@ -1,16 +1,23 @@
 #!/bin/bash
 # Link every application config of a theme into ~/.config and reload running apps.
 # Usage: switch-theme.sh <theme>
-#        switch-theme.sh --list    (one "name<TAB>planet image" line per theme)
+#        switch-theme.sh --list    (one "name<TAB>emblem<TAB>group" line per theme, base left out)
 
 THEMES_DIR="$(dirname "$(dirname "$(realpath "$0")")")/themes"
 APPS=(fish hypr kitty nvim quickshell tmux yazi)
 THEME="$1"
 
+# A theme is a directory with a quickshell/ config, directly in themes/ or in a group (themes/star_wars/hoth)
+theme_dirs() {
+  find "$THEMES_DIR" -mindepth 2 -maxdepth 3 -type d -name quickshell -printf '%h\n' | sort
+}
+
 if [ "$THEME" = "--list" ]; then
-  for dir in "$THEMES_DIR"/*/; do
-    dir="${dir%/}"
-    printf '%s\t%s\n' "$(basename "$dir")" "$dir/quickshell/assets/planet.svg"
+  # base is the template for new themes: still switchable by name, but not offered in the picker
+  theme_dirs | grep -vx "$THEMES_DIR/base" | while read -r dir; do
+    group="$(dirname "$dir")"
+    [ "$group" = "$THEMES_DIR" ] && group=""
+    printf '%s\t%s\t%s\n' "$(basename "$dir")" "$dir/quickshell/assets/emblem.svg" "$(basename "$group")"
   done
   exit 0
 fi
@@ -20,14 +27,15 @@ if [ -z "$THEME" ]; then
   exit 1
 fi
 
-if [ ! -d "$THEMES_DIR/$THEME" ]; then
+THEME_DIR="$(theme_dirs | grep -m1 "/$THEME\$")"
+if [ -z "$THEME_DIR" ]; then
   echo "Unknown theme: $THEME (see --list)"
   exit 1
 fi
 
 # Check everything before linking anything, so a failure never leaves a half-switched session
 for app in "${APPS[@]}"; do
-  if [ ! -d "$THEMES_DIR/$THEME/$app" ]; then
+  if [ ! -d "$THEME_DIR/$app" ]; then
     echo "Missing configuration for $app in theme $THEME"
     exit 1
   fi
@@ -40,13 +48,13 @@ done
 
 mkdir -p "$HOME/.config"
 for app in "${APPS[@]}"; do
-  ln -sfn "$THEMES_DIR/$THEME/$app" "$HOME/.config/$app"
+  ln -sfn "$THEME_DIR/$app" "$HOME/.config/$app"
   echo "Linked $app"
 done
 
 # fish keeps universal variables (set -U) next to its config: share one file across themes
 fish_vars="$HOME/.local/state/fish/fish_variables"
-theme_vars="$THEMES_DIR/$THEME/fish/fish_variables"
+theme_vars="$THEME_DIR/fish/fish_variables"
 mkdir -p "$(dirname "$fish_vars")"
 if [ -f "$theme_vars" ] && [ ! -L "$theme_vars" ] && [ ! -e "$fish_vars" ]; then
   mv "$theme_vars" "$fish_vars"

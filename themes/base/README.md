@@ -56,7 +56,7 @@ same colour means the same thing in every app.
 
 | App | File |
 |---|---|
-| Quickshell | `quickshell/config/Theme.qml`, `quickshell/assets/planet.svg` (the theme in the theme picker) |
+| Quickshell | `quickshell/config/Theme.qml`, `quickshell/assets/emblem.svg` (the theme in the theme picker) |
 | Hyprland | `hypr/hyprland/appearance.lua` |
 | Kitty | `kitty/kitty.conf` (the 16 ANSI colours, inherited by eza, bat and other CLI tools) |
 | Fish | `fish/conf.d/theme.fish`, `fish/functions/fish_prompt.fish` |

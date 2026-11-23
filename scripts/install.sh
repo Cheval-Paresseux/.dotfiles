@@ -32,7 +32,7 @@ PACKAGES=(
   # AUR helper
   paru
 )
-AUR_PACKAGES=(ttf-oxanium)
+AUR_PACKAGES=(ttf-oxanium ttf-playfair-variable)
 
 sudo pacman -S --needed "${PACKAGES[@]}"
 paru -S --needed "${AUR_PACKAGES[@]}"
@@ -54,7 +54,7 @@ for app in fish hypr kitty nvim quickshell tmux yazi; do
   fi
 done
 
-"$SCRIPTS/switch-theme.sh" base
+"$SCRIPTS/switch-theme.sh" death_star
 
 echo
 echo "Done. Reboot and log in to the Hyprland (UWSM) session."

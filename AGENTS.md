@@ -6,19 +6,19 @@ set of configs; `scripts/switch-theme.sh` links one into `~/.config` and reloads
 ## Layout
 
 ```
-themes/<theme>/
+themes/<theme>/            a theme, directly in themes/ or in a group (themes/star_wars/<theme>)
   fish/        conf.d/theme.fish (colours), conf.d/theme-reload.fish, functions/ (prompt, greeting)
   hypr/        Hyprland Lua config (hyprland.lua, hyprland/*.lua)
   kitty/       kitty.conf: the 16 ANSI colours every CLI tool inherits
   nvim/        lazy.nvim config, palette in lua/config/palette.lua
   quickshell/  bar, popups, pickers, lock, wallpaper; palette in config/Theme.qml, glyphs in config/Icons.qml
                (a theme may add one-colour SVGs in assets/icons, drawn and tinted by components/SvgIcon.qml);
-               assets/planet.svg is the full-colour planet that stands for the theme in the theme picker
+               assets/emblem.svg is the full-colour picture that stands for the theme in the theme picker
   tmux/        tmux.conf
   yazi/        theme.toml
   README.md    palette, colour rules, shapes/icons, file map
 scripts/switch-theme.sh   <theme> | --list
-scripts/install.sh        packages, services, login shell, then the base theme
+scripts/install.sh        packages, services, login shell, then the death_star theme
 scripts/install-sddm.sh   copies sddm/ to /usr/share/sddm/themes/dotfiles and enables SDDM
 sddm/                     SDDM login screen (one for all themes: it runs before any session), live wallpapers
 ```
@@ -30,7 +30,11 @@ that can reload live should hook into the same mechanism, in every theme. It als
 theme's `fish/fish_variables` (ignored by the root `.gitignore`) to `~/.local/state/fish/fish_variables`, so fish
 universal variables are shared by all themes.
 
-`themes/base` is the reference: simple, square, neutral greys with vivid accents.
+Themes are named by their directory (`hoth`, not `star_wars/hoth`), so names must be unique across groups.
+A group holds up to five themes: the theme picker shows one row per group, its emblems drawn in the
+group's style (Star Wars: planets; The Gentleman: objects from the scene).
+`themes/base` is the reference: simple, square, neutral greys with vivid accents. It is a template for new
+themes, not offered in the theme picker (`switch-theme.sh base` still works for testing).
 Every theme ships the same app directories (the switcher refuses a theme with one missing).
 
 ## General rules
@@ -68,11 +72,12 @@ role names, not raw hex, wherever the app allows it.
 
 ## Workflow: creating a new theme
 
-1. **Copy the base theme** as the starting point: `cp -r themes/base themes/<name>`, then
+1. **Copy the base theme** as the starting point: `cp -r themes/base themes/<name>` (or `themes/<group>/<name>`), then
    replace the wallpapers in `quickshell/assets/wallpapers/` and set `name` and
    `defaultWallpaper` in `quickshell/config/Theme.qml` (the default must be a file that exists).
-   Draw the theme's own `quickshell/assets/planet.svg` (200×200, planet of radius 70 at the centre,
-   lit from the top left, in the theme's palette) so it can be told apart in the theme picker.
+   Draw the theme's own `quickshell/assets/emblem.svg` (200×200, lit from the top left, in the theme's
+   palette) in its group's style so it can be told apart in the theme picker: a planet of radius 70 at
+   the centre for Star Wars, an object from the theme's scene for The Gentleman (whisky: a snifter).
 
 2. **Adapt every component with what is already installed.** Go beyond recolouring:
    - *Palette*: derive it from the wallpapers; keep the role mapping above. Update every app:
